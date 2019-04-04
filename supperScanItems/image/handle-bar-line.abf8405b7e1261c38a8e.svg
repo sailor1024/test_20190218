@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="6px" viewBox="0 0 26 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="小提手" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.600203804">
+        <g transform="translate(-174.000000, -581.000000)" fill="#FFFFFF" fill-rule="nonzero" id="Group-2">
+            <g transform="translate(174.000000, 581.000000)">
+                <path d="M0.519195433,1 C0.232451713,1 0,0.776142375 0,0.5 C0,0.223857625 0.232451713,0 0.519195433,0 L25.4808046,0 C25.7675483,0 26,0.223857625 26,0.5 C26,0.776142375 25.7675483,1 25.4808046,1 L0.519195433,1 Z" id="Path-33"></path>
+                <path d="M0.519195433,6 C0.232451713,6 0,5.77614237 0,5.5 C0,5.22385763 0.232451713,5 0.519195433,5 L25.4808046,5 C25.7675483,5 26,5.22385763 26,5.5 C26,5.77614237 25.7675483,6 25.4808046,6 L0.519195433,6 Z" id="Path-33-Copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>

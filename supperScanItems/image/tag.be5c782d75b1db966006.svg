@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>切片</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="16.5798944%" x2="50%" y2="135.098086%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.799960371" offset="100%"></stop>
+        </linearGradient>
+        <path d="M13.5838234,16.7261786 C15.7908718,16.7261786 19.3656822,16.7261786 21.5775922,16.7261786 L18.8568038,16.7261786 C21.064592,16.7261786 22.742694,18.5141151 22.6054097,20.7122793 L22.2836093,25.8648727 C22.2149867,26.963642 21.2726761,27.8525966 20.1617002,27.8503741 L12.6128721,27.8352728 C11.5095967,27.8330657 10.5510886,26.9412718 10.4721652,25.8459075 L10.1028097,20.7196844 C9.94389491,18.514132 11.5965098,16.7261786 13.8112838,16.7261786 L13.5838234,16.7261786 Z" id="path-2"></path>
+        <filter x="-224.8%" y="-179.8%" width="549.5%" height="603.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="分组-6" transform="translate(15.280167, 13.835171) rotate(6.000000) translate(-15.280167, -13.835171) translate(-3.219833, -4.164829)">
+            <g id="分组-4">
+                <g id="标签-(1)" transform="translate(18.427270, 18.322677) rotate(-28.000000) translate(-18.427270, -18.322677) translate(4.927270, 5.822677)" fill-rule="nonzero" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                    <path d="M8.73487936,7.29645071 L7.34120288,13.5482426 L6.23570145,18.7078868 C6.00880608,19.7668627 6.66605113,20.8140457 7.71834136,21.0701644 L15.9889305,23.0831571 C17.0621683,23.3443743 18.1439578,22.6861015 18.405175,21.6128637 C18.4057079,21.6106739 18.4062372,21.6084833 18.4067628,21.6062918 L19.5098592,16.8702179 L21.1365856,10.1596102 M20.9330645,11.0718638 L21.2368021,9.80530821 C21.3708386,9.24638925 21.2579354,8.65682011 20.9268875,8.18696536 L16.6096153,2.05948046 L9.81679907,5.52059321 C9.280178,5.7940153 8.89534153,6.29469929 8.76916463,6.88359758 L8.41675053,8.67441807" id="形状" transform="translate(13.741448, 12.599916) rotate(54.000000) translate(-13.741448, -12.599916) "></path>
+                </g>
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="Mask-Copy-4" opacity="0.15" transform="translate(16.354494, 22.288105) rotate(41.000000) translate(-16.354494, -22.288105) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="biaoqian-2" transform="translate(21.000000, 13.000000)" fill="#FFFFFF">
+                <path d="M0,1.5 C0,2.32842712 0.671572875,3 1.5,3 C2.32842712,3 3,2.32842712 3,1.5 C3,0.671572875 2.32842712,0 1.5,0 C0.671572875,0 0,0.671572875 0,1.5 Z" id="路径-copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>
