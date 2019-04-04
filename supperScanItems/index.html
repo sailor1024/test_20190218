@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Light&Magic;
+    </title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" name="viewport" />
+    <!-- <meta name=”viewport” content=”width=device-width, initial-scale=1.0″> -->
+    <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control" />
+    <meta content="no-cache" http-equiv="Pragma" />
+    <meta content="0" http-equiv="Expires" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <!-- <link href="./font/iconfont.css" rel="stylesheet" />
+    <link href="./font3/iconfont.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="./css/beike.css"> -->
+    <!-- <link rel="stylesheet" href="./css/swiper.css"> -->
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <style>
+ html{
+     background-color: #000
+ }
+</style>
+</head>
+
+<body>
+        <div id="Stats-output"></div>
+        <!-- 加载 -->
+        <div class="loading" style="z-index: 100000;">
+            </div>
+    <!-- 反馈 -->
+    <div class="question">
+        <div class="questionAlert">
+            <div>
+                <span class="questionTitleMsgTwo">提交失败，请重试</span>
+            </div>
+        </div>
+        <div class="questionTitle">
+            <div>
+                <p class="questionTitleImg">
+                    <img src="./image/comfirm.png" alt="">
+                </p>
+                <span class="questionTitleMsg">反馈成功</span>
+                <span class="questionTitleMsgWto">
+                    您的信息我们已经收到
+                </span>
+                <span class="questionTitleMsgTwo">
+                    非常感谢您提交的宝贵意见
+                </span>
+            </div>
+        </div>
+        <div>
+            <header>
+                <i class="iconfont iconfanhui"></i>
+                <span>问题反馈</span>
+            </header><!-- /header -->
+            <div class="errorType">
+                <p class="errorType-header">错误类型</p>
+                <ul>
+                    <li class="active" data-index="1">3D模型</li>
+                    <li data-index="2">房间照片</li>
+                    <li data-index="3">户型图</li>
+                    <li data-index="4">文字标签</li>
+                    <li data-index="5">三维标尺</li>
+                    <li data-index="6">联系电话</li>
+                    <li data-index="7">联系人</li>
+                    <li data-index="8">房源信息</li>
+                    <li data-index="9">其它</li>
+                </ul>
+            </div>
+            <div class="errorInset">
+                <p>错误描述（选填）</p>
+                <div class="errorInset-text">
+                    <textarea maxlength="500" name="text" placeholder="请输入问题描述..."></textarea>
+                    <span id="num">0/500</span>
+                </div>
+            </div>
+            <div class="errorConnect">
+                <p>联系方式（选填）</p>
+                <input type="number" name="" placeholder="请输入您的手机号码">
+            </div>
+            <div class="errorSubmite">
+                <p class="active">提交</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="info"></div> -->
+    <div class="sidemap" module="sidemap" style="display: none;">
+        <div class="sidemap-label js-label">
+            面积 约87.74㎡
+        </div>
+        <div class="sidemap-main">
+            <div class="sidemap-map js-minimap">
+                <!-- <div class="sidemap-map-image" style="width: 270px; height: 204.314px;"><img src="//vrlab-public.ljcdn.com/release/vrcustomer/115774/floorplan/outline_0_95ac7f5a-95a7-49d9-be3c-8ae4f1b44826.png">
+                </div> -->
+            </div>
+        </div><a href="javascript:;" class="sidemap-button js-button-floorplan"><i class="sidemap-button-icon-floorplan"></i><span>三维模型</span></a>
+    </div>
+    <!-- 分享 -->
+    <div class="ui-confirm-layer">
+        <div class="ui-confirm-pannel js-ui-confirm-pannel">
+            <h2 class="ui-confirm-title">分享链接给好友</h2>
+            <div class="ui-confirm-message">
+                <textarea cols="20" rows="10" id="copy-message" style="display:none;">https://todo.kangyun3d.cn/scanItems/?p=641b3ad9547fbd821d764372e150c7ac</textarea>
+                <span style="word-break: break-all; white-space: normal;">https://todo.kangyun3d.cn/scanItems/?p=641b3ad9547fbd821d764372e150c7ac</span>
+            </div>
+            <div class="ui-confirm-button-group">
+                <a class="ui-confirm-button js-ui-confirm-cancel">取消</a>
+                <a class="ui-confirm-button js-ui-confirm-ok with-focus">复制</a>
+            </div>
+        </div>
+    </div>
+    <!-- 头部切换 -->
+    <!-- <div class="viewport-floorplan-control-buttons-pc js-minimap-buttons">
+        <a class="viewport-floorplan-control-button with-panorama js-panorama" href="javascript:;">
+            <i>
+            </i>
+            <span>
+            </span>
+        </a>
+        <a class="viewport-floorplan-control-button with-floorplan js-minimap-off active" href="javascript:;">
+            <i>
+            </i>
+            <span>
+            </span>
+        </a>
+        <a class="viewport-floorplan-control-button with-minimap js-minimap-on" href="javascript:;">
+            <i class="iconfont icon-five">
+            </i>
+            <span>
+            </span>
+        </a>
+    </div> -->
+    <!--<div class="help">-->
+        <!--<div>-->
+            <!--<div class="ctaContainer showMessage helpCta" id="cta-container">-->
+                <!--<div class="cta">-->
+                    <!--<h1>-->
+                        <!--点击探索3D空间-->
+                    <!--</h1>-->
+                    <!--<h2>-->
+                        <!--旋转-->
+                    <!--</h2>-->
+                    <!--<img src="./image/nav_help_mouse_drag_left.png" />-->
+                    <!--<hr />-->
+                    <!--<img class="footer-icon" src="./image/nav_help_keyboard_left_right.png" />-->
+                    <!--<h2>-->
+                        <!--移动-->
+                    <!--</h2>-->
+                    <!--<img src="./image/nav_help_mouse_click.png" />-->
+                    <!--<hr />-->
+                    <!--<img class="footer-icon" src="./image/nav_help_keyboard_left_right.png" />-->
+                    <!--<h2>-->
+                        <!--缩放-->
+                    <!--</h2>-->
+                    <!--<img src="./image/nav_help_mouse_zoom.png" />-->
+                    <!--<hr />-->
+                    <!--<img class="footer-icon" src="./image/nav_help_zoom_keys.png" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!-- 加载 -->
+    <div class="loading" style="z-index: 100000;">
+    </div>
+    <div class="bodyMask">
+    </div>
+    <div class="iconfont icon-zuojiantou hidebtn" style="display:none;line-height:52px;position: absolute;top: 10px;left: 10px;z-index: 2">
+    </div>
+    <!--<div class="title_mes" style="display:none;z-index:1">-->
+        <!--<div class="title_mes_top">-->
+            <!--<div class="scanTitle" id="pageTitle">-->
+                <!--Light&Magic;-->
+                <!--<span class="moreBtn">-->
+                    <!--<span class="LorM">-->
+                        <!--Less-->
+                    <!--</span>-->
+                    <!--<span class="iconfont icon-xiajiantou">-->
+                    <!--</span>-->
+                <!--</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="title_mes_main">-->
+            <!--<p class="description" id="pageMsg">-->
+                <!--<span>-->
+                    <!--康云多维视觉智能科技有限公司成立于2017年6月22日，是一家以三维引擎为核心技术，拥有高门槛微米级别的三维智能建模扫描设备及多屏互动展示的开创性企业。-->
+                <!--</span>-->
+            <!--</p>-->
+            <!--<div class="location">-->
+                <!--<span class="iconfont icon-dingwei">-->
+                <!--</span>-->
+                <!--<span id="pageLocation">-->
+                    <!--科汇金谷-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="link">-->
+                <!--<span class="iconfont icon-link">-->
+                <!--</span>-->
+                <!--<span>-->
+                    <!--Learn more:-->
+                    <!--<a href="" id="pageUrl" target="_blank">-->
+                    <!--</a>-->
+                <!--</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!-- 标题 -->
+    <div class="titlebar-text" href="javascript:;">
+        <span id="model-title">万年广阳郡九号3室2厅</span>
+        <a href="javascript:;" class="toolbar-item toolbar-item-share"><i class="iconfont iconfenxiang  js-share" style="display: none;"></i></a>
+    </div>
+        <!-- 轮播内容 -->
+        <div class="pc-bar">
+            <div class="pc-image">
+                <img src="./image/3.png" style="width: 100%; height: 100%;" class="swiper-image">
+            </div>
+            <div class="pc-piece">
+                <div class="pc-title">
+                    <div class="pc-name">
+                        <span>
+                            详细信息
+                        </span>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <div class="pc-label">
+                        <div class=" pc-item-left label-icon label-icon-price">
+                            <i class="iconfont iconhuxing"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                户型
+                            </div>
+                            <div class=" pc-item-right-bottom label-item-right-bottom-red HUXING">
+                                3 室 2 厅
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pc-label">
+                        <div class=" pc-item-left label-icon label-icon-area">
+                            <i class="iconfont iconmianji"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                面积
+                            </div>
+                            <div class=" pc-item-right-bottom mianji">
+                                166 ㎡
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pc-label">
+                        <div class=" pc-item-left label-icon label-icon-orientation">
+                            <i class="iconfont iconzhaoxiang"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                朝向
+                            </div>
+                            <div class=" pc-item-right-bottom chaoxiang">
+                                南，北
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pc-label">
+                        <div class=" pc-item-left label-icon label-icon-orientation">
+                            <i class="iconfont iconlianxiren pc-iconlianxiren" style="font-size: 12px;"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                联系人
+                            </div>
+                            <div class=" pc-item-right-bottom lianxiren">
+                                李生
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pc-label">
+                        <div class=" pc-item-left label-icon label-icon-orientation">
+                            <i class="iconfont icondianhua1"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                电话
+                            </div>
+                            <div class=" pc-item-right-bottom" id="dianhua" style="color:#68aaff">
+                                +86 1380 395 569
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" pc-label" style="clear: both;">
+                        <div class=" pc-item-left label-icon label-icon-city_name">
+                            <i class="iconfont icondizhi"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                地址
+                            </div>
+                            <div class=" pc-item-right-bottom label-address">
+                                北京市良乡大学城广阳郡九号
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pc-label xiangqingshezhi" style="clear: both;">
+                        <div class=" pc-item-left label-icon label-icon-floor_state">
+                            <i class="iconfont iconxiangqing"></i>
+                        </div>
+                        <div class="pc-item-right">
+                            <div class="pc-item-right-top">
+                                详情
+                            </div>
+                            <div class="pc-xiangqing xiangqing" id="houseDetail">
+                                长沙运成雅美酒店，位于长沙市友谊路413号运成大厦，由国内知名企业家倾力打造，集客房、餐饮、会议为一体的商务型连锁精品酒店，共计客房146间，餐位300余位
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="titlebar-modal-stamp off">
+                </div>
+            </div>
+            <div id="pc-allmap"></div>
+
+        </div>
+    <!-- 轮播内容 -->
+    <div class="titlebar-bar">
+        <div class="titlebar-modal js-modal">
+            <div class="stage">
+                <!-- Swiper -->
+                <div class="swiper-container Swiper-msg">
+                    <div class="swiper-wrapper">
+                         <div class="swiper-slide">
+                             <img src="./image/3.png" style="width: 100%; height: 100%;" class="swiper-image">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="piece" id="piece1">
+                                <div class="titlebar-title">
+                                    <div class="titlebar-name">
+                                        <span>
+                                            详细信息
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="titlebar-info">
+                                    <div class=" titlebar-label ">
+                                        <div class=" label-item-left label-icon label-icon-price">
+                                            <i class="iconfont iconhuxing"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                户型
+                                            </div>
+                                            <div class=" label-item-right-bottom label-item-right-bottom-red HUXING">
+                                                3 室 2 厅
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" titlebar-label ">
+                                        <div class=" label-item-left label-icon label-icon-area">
+                                            <i class="iconfont iconmianji"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                面积
+                                            </div>
+                                            <div class=" label-item-right-bottom mianji">
+                                                166 ㎡
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class=" titlebar-label ">
+                                        <div class=" label-item-left label-icon label-icon-orientation">
+                                            <i class="iconfont iconzhaoxiang"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                朝向
+                                            </div>
+                                            <div class=" label-item-right-bottom chaoxiang">
+                                                南，北
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" titlebar-label ">
+                                        <div class=" label-item-left label-icon label-icon-orientation">
+                                            <i class="iconfont iconlianxiren" style="font-size: 12px;"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                联系人
+                                            </div>
+                                            <div class=" label-item-right-bottom lianxiren">
+                                                李生
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class=" titlebar-label ">
+                                        <div class=" label-item-left label-icon label-icon-orientation">
+                                            <i class="iconfont icondianhua1"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                电话
+                                            </div>
+                                            <div class=" label-item-right-bottom" id="dianhua" style="color:#68aaff">
+                                                +86 1380 395 569
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" titlebar-label" style="clear: both;">
+                                        <div class=" label-item-left label-icon label-icon-city_name">
+                                            <i class="iconfont icondizhi"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                地址
+                                            </div>
+                                            <div class=" label-item-right-bottom label-address">
+                                                北京市良乡大学城广阳郡九号
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" titlebar-label xiangqingshezhi" style="clear: both;">
+                                        <div class=" label-item-left label-icon label-icon-floor_state">
+                                            <i class="iconfont iconxiangqing"></i>
+                                        </div>
+                                        <div class="label-item-right">
+                                            <div class="label-item-right-top">
+                                                详情
+                                            </div>
+                                            <div class=" label-item-right-bottom xiangqing" id="houseDetail">
+                                                长沙运成雅美酒店，位于长沙市友谊路413号运成大厦，由国内知名企业家倾力打造，集客房、餐饮、会议为一体的商务型连锁精品酒店，共计客房146间，餐位300余位
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="titlebar-modal-stamp off">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="swiper-slide">
+                            <div id="allmap"></div>
+                           <!--  <div class="piece" id="piece2">
+                                <div class="titlebar-map">
+                                    <a class="js-baidumap" data-latitude="23.141675" data-longitude="113.567054"
+                                        data-zoom="16" href="javascript:;">
+
+                                    </a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+        </div>
+    </div>
+       <!--  <div class="title-change">
+            <div class="title-change-back">
+                <img src="./image/beikeBack.svg" alt="">
+                <span>返回</span>
+            </div>
+            <div class="title-change-2d">
+                <i class="iconfont icon-five"></i>
+                <span>户型图</span>
+            </div>
+            <div class="title-change-3d active">
+                <i></i>
+                <span>三维模型</span>
+            </div>
+        </div> -->
+    <!-- </div> -->
+    <div class="titlebar-text-arrow">
+    </div>
+    <!--<div class="stupid-music" style="display:none">-->
+        <!--<div class="music_icon_off ui-icon" style="display:none;margin-left:12px;">-->
+            <!--<img alt="" src="image/music.svg" />-->
+        <!--</div>-->
+        <!--<audio id="audio1">-->
+        <!--</audio>-->
+        <!--<audio id="audio2" type="audio/ogg">-->
+        <!--</audio>-->
+    <!--</div>-->
+    <!--<div class="music_icon on ui-icon" style="display: none;position: absolute;right:10px;top: 9px;">-->
+        <!--<ul class="music_wrap">-->
+            <!--<li class="m1">-->
+            <!--</li>-->
+            <!--<li class="m2">-->
+            <!--</li>-->
+            <!--<li class="m3">-->
+            <!--</li>-->
+            <!--<li class="m1">-->
+            <!--</li>-->
+            <!--<li class="m2">-->
+            <!--</li>-->
+            <!--<li class="m3">-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div id="container" style="background:#000">
+        <div class="titleBarLeft">
+            <span>
+            </span>
+        </div>
+        <div class="code_mask">
+        </div>
+        <div class="show_code">
+            <div class="code_warp" id="qrcode">
+                <p>
+                    <a href="" id="pageUrl2" target="_blank">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="mapContainer" origin="true" style="display: none;">
+            <div class="mapImg">
+                <div class="Compass">
+                    <div class="Compass-center">
+                    </div>
+                    <div class="Compass-arrows">
+                    </div>
+                    <button class="Compass-button" data-type="spin">
+                        <svg class="Icon Icon--compass" id="compass" role="img" style="enable-background:new 0 0 750 1334;"
+                            version="1.1" viewbox="0 0 750 1334" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #BA2824;
+                                }
+
+                                .st1 {
+                                    fill: #D82F2A;
+                                }
+
+                                .st2 {
+                                    fill: #E0E0E0;
+                                }
+
+                                .st3 {
+                                    fill: #FFFFFF;
+                                }
+                            </style>
+                            <path class="st0" d="M374.2,1061.5l179.2-394.2H195L374.2,1061.5z M374.2,1061.5">
+                            </path>
+                            <path class="st1" d="M374.2,1061.5V667.2H195L374.2,1061.5z M374.2,1061.5">
+                            </path>
+                            <path class="st2" d="M374.2,273L195,667.2h358.4L374.2,273z M374.2,273">
+                            </path>
+                            <path class="st3" d="M374.2,273v394.2h179.2L374.2,273z M374.2,273">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <span class="movingSpan" style="display: none">
+                </span>
+            </div>
+            <div class="mapBtnGroup">
+            </div>
+        </div>
+        <!-- 左下角按钮 -->
+        <div class="pinBottom-container" >
+            <div class="slide-area js-slide-area" state="entry">
+                <ul class="slide-box js-slide-box" style="">
+                    <li class="slide-row">
+                        <div class="slide-content multimedia-panel js-multimedia-panel" style="background: transparent;">
+                            <div class="slidepanelpc-main">
+                                <div class="multimedia-panel js-multimedia-panel" state="entry">
+                                    <div class="entry-bar js-entry-bar">
+                                        <div class="content" style="display: flex;justify-content: space-between;align-items: center;">
+                                            <div class="gradient-line-border left right top bottom"><i></i></div>
+                                            <div class="realtime-btn entry-btn js-realtime">
+                                                <div class="pinBottom left highlightExists">
+                                                    <div class="viewContainerPc">
+                                                        <div class="ui-icon darkGlass" id="pullTab">
+                                                        <!--     <a class="hasHover">
+                                                                <img src="./image/down1.svg" class="PC-img left-down img-36-57"></img>
+                                                                <img src="./image/up1.svg" style="display: none;" class="phone-img left-up img-36-57"></img>
+                                                            </a> -->
+                                                             <a class="hasHover"><i class="iconfont iconshang phone-img"></i></a>
+                                                        </div>
+                                                       <!--  <div class="previous ui-icon" id="previous">
+                                                            <a class="hasHover">
+                                                                <img src="./image/prev.png"></img>
+                                                            </a>
+                                                        </div> -->
+                                                         <div class="settingpc1 play" id="play"  style="display: block;">
+                                                             <i class="iconfont iconbofang"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            播放
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                             <div class="settingpc1 pause" id="pause" style="display: none;" >
+                                                                 <i class="iconfont iconzanting"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            暂停
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                       <!--  <div class="next ui-icon wide" id="next">
+                                                            <a class="hasHover">
+                                                                <img src="./image/next.png">
+                                                                </img>
+                                                            </a>
+                                                        </div> -->
+                                                            <div class="settingpc1">
+                                                                <i class="iconfont iconsanwei js-minimap-off" id="model"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            三维模型
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="settingpc1">
+                                                                <i class="iconfont iconhuxingtu js-minimap-on" id="house-type" style="font-size: 33px;margin-left: 2px;"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            平面图
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="settingpc1">
+                                                                <i class="iconfont iconmanyou js-panorama" id="walk"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            漫游
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="settingpc1">
+                                                                <i class="iconfont iconVR js-vrpanorama" id="vr"></i>
+                                                                <div class="toolbarpc-setting-modal1">
+                                                                    <div class="toolbarpc-modal-main1">
+                                                                            VR模式
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="toolbarpc">
+                                                            <div class="settingpc">
+                                                                <i class="iconfont iconshezhi toolbarpc-icon"></i>
+                                                                <div class="toolbarpc-setting-modal">
+                                                                    <div class="toolbarpc-modal-main"><span class="arrow"></span>
+                                                                        <div class="toolbarpc-modal-left">
+                                                                            <div class="toolbarpc-item toolbarpc-ruler js-ruler PC-jsRuler"
+                                                                                data-state="close">
+                                                                                <div class="close"><i class="iconfont iconbiaochi" style="font-size: 32px;margin-bottom: 8px;"></i><span>打开标尺</span></div>
+                                                                            </div>
+                                                                            <div class="toolbarpc-item toolbarpc-tag js-tag PC-jstag"
+                                                                                data-state="open">
+                                                                                <div class="open"><i class="iconfont iconguanbibiaoqian" style="font-size: 32px;margin-bottom: 8px;"></i><span>关闭标签</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewContainerCommon" style="display: none;">
+                                                        <div class="playingHide" >
+                                                            <div class="next ui-icon " id="monirenxing">
+                                                                <a class="hasHover">
+                                                              <!--       <img src="./image/human.svg" class="img-28-28">
+                                                                    </img> -->
+                                                                </a>
+                                                            </div>
+                                                            <div class="next ui-icon " id="mapBtn2D">
+                                                                <a class="hasHover">
+                                                                  <!--   <img src="./image/huxing.svg" class="img-28-28">
+                                                                    </img> -->
+                                                                </a>
+                                                            </div>
+                                                            <div class="next ui-icon " id="mapBtn3D">
+                                                                <a class="hasHover">
+                                                                <!--     <img src="./image/threeD.svg" class="img-28-28">
+                                                                    </img> -->
+                                                                </a>
+                                                            </div>
+                                                            <div class="stupid-icon next ui-icon">
+                                                                <a href="">
+                                                                   <!--  <img src="./image/phone.svg"  class="img-24-24">
+                                                                    </img> -->
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide-row test-slokogo">
+                        <div class="slide-content tools-panel js-tool-panel" style="background: rgba(0, 0, 0, .5);">
+                            <div class="tool-item tool-ruler js-ruler MobileJs-Ruler" data-state="close">
+                                <i class="iconfont iconbiaochi"></i>
+                                <span>打开标尺</span></div>
+                            <div class="tool-item tool-tag js-tag MobileJs-tag" data-state="open">
+                                <i class="iconfont iconguanbibiaoqian"></i>
+                                <span>关闭标签</span></div>
+                            <!-- <div class="tool-item tool-glasses js-vrpanorama" data-log="click_slidepanel_glasses"><i></i><span>眼镜模式</span></div> -->
+                            <!--<div class="tool-item tool-feed js-feedback" data-log="click_slidepanel_feedback"><i></i><span>问题反馈</span></div>-->
+                            <div class="tool-item tool-feed js-feedback" data-log="click_slidepanel_feedback"><i class="iconfont iconwentifankui1"></i><span>问题反馈</span></div>
+                        </div>
+                    </li>
+                    <li class="slide-row">
+                        <div class="slide-content intro-panel" style="background: transparent;">
+                            <div class="swiper">
+                                <ul class="swiper_ul">
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 右下角按钮 -->
+        <nav class="menu">
+          <input type="checkbox" href="#" name="menu-open" id="menu-open" class="menu-open">
+          <label class="menu-open-button menu-zhu js-fold" for="menu-open">
+            <span class="lines line-1"></span>
+            <span class="lines line-2"></span>
+            <span class="lines line-3"></span>
+          </label>
+           <a class="menu-item dianhua" href="tel:13764567708"> <i class="iconfont icondianhua1"></i></a>
+          <a class="menu-item dianzhan"><i class="iconfont icondianzan"></i></a>
+          <a class="menu-item" id="menu-comment"><i class="iconfont iconpinglun"></i></a>
+        </nav>
+
+        <!-- 面积 -->
+        <div id="inset" style="display: none;">
+            <p  id="mianji" style="display: none;">面积 约 <span class="mianji">200</span></p>
+            <div id="minimap">
+            </div>
+            <!-- <a href="javascript:;" class="sidemap-button js-button-floorplan"><i class="sidemap-button-icon-floorplan"></i><span>漫游模式</span></a> -->
+        </div>
+
+        <!-- 浏览量 -->
+        <div id="views" style="display: none;">
+            <i class="iconfont iconliulanliang"></i><span id="chakan">500</span>
+        </div>
+    </div>
+        <div id="household_chart"><img src="image/household_chart.png" onerror="this.src='image/household_chart.png';this.onerror=null; "/></div>
+    <!-- </div> -->
+    <!-- <div id="smg" style="position: fixed;z-index: 99999;left: 0;top:0;width: 100%;height: 100%;"></div> -->
+         <div class="pc-masking"></div>
+         <div class="m2d-masking"></div>
+</body>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=CZksSKfr5vVaA8vVQjft45VtxwmsTf3i"></script>
+<script src="https://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+<script src="./common/jquery-3.3.1.min.js"></script>
+<!-- <script src="./common/modernizr.js"></script> -->
+<script src="./common/signals.min.js"></script>
+<script src="./common/three.min.js"></script>
+
+<!-- js/postprocessing -->
+<script src="js/postprocessing/EffectComposer.js"></script>
+<script src="js/postprocessing/MaskPass.js"></script>
+<script src="js/postprocessing/RenderPass.js"></script>
+<script src="js/postprocessing/ShaderPass.js"></script>
+<script src="js/postprocessing/OutlinePass.js"></script>
+
+<!-- js/shaders -->
+<script src="js/postprocessing/CopyShader.js"></script>
+<script src="js/postprocessing/FXAAShader.js"></script>
+
+<script src="./common/dat.gui.min.js"></script>
+<!-- <script type="text/javascript" src="qrcode.js"></script> -->
+<!-- <script src='./js/qrcode.min.js'></script> -->
+<!-- <script src="./js/addlabel.js"></script> -->
+<script src="./js/slider.js"></script>
+<script src="./js/swiper.js"></script>
+<!-- <script src="./js/howler.min.js"></script> -->
+<!-- <script src="./js/map.js"></script> -->
+<!-- <div id="cydiv" style="position: fixed; bottom: 12%; width: 46%; left: 27%; z-index: 100000;">
+    <img src="./image/close.svg" class="close-svg">
+    <div id="SOHUCS" sid="sid" style="font-size: 10px; background: #111;padding: 0 40px;height: 700px;display: none;overflow-y: auto; margin: auto;"></div> 
+</div> -->
+<!-- <script type="text/javascript">
+    //畅言sid
+    function sdfjdfdf_getQusdfdsdlfgnkdflsgdfgfsdferyString(name) {
+         var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+         var r = window.location.search.substr(1).match(reg);
+         if (r != null) {
+             return unescape(r[2]);
+         }
+         return null;
+     }
+     var dirname = sdfjdfdf_getQusdfdsdlfgnkdflsgdfgfsdferyString('p');
+    $("#SOHUCS").attr("sid", dirname);
+
+    //畅言手机版加载前调用
+    // var ua = navigator.userAgent;
+    // if (/AppleWebKit.*Mobile.*/.test(ua)) {
+        var appid = 'cyu5ronRe';
+        var conf = 'prod_1d0e46fb79ddd3e1ce909aaea4af6177';
+        // var width = window.innerWidth || document.documentElement.clientWidth;
+        // 线上是要获取iframe的宽
+        var width = $('#iframe').width;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            var loadJs = function(d, a) {
+                var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                var b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function() {
+                            var e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("https://changyan.sohu.com/upload/changyan.js",
+            function() {
+            window.changyan.api.config({
+                appid: appid,
+                conf: conf
+            })
+            });
+        }
+    // } 
+    
+    //弹出畅言
+    $('#menu-comment').on('click', function(e){
+        console.log(2);
+        $('#SOHUCS').click();
+        $(document).unbind('mousewheel');
+    })
+</script> -->
+<script>
+    (function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+
+            clearTimeout(id);
+        };
+}());
+    // 9月6号加入的代码开始
+    var phpedit_url = "https://todo.kangyun3d.cn/index.php/index2/";
+    var php_url = "https://todo.kangyun3d.cn/index.php/";
+    var phpimg_url = "https://todo.kangyun3d.cn/";
+
+    let result = '';
+
+    // 改变SVG颜色
+    $('.settingpc1>svg').mouseover(function(){
+         $(this).find('g[id="Group-1097"]').attr('fill', '#4bcdfc');
+    })
+
+    $('.settingpc1>svg').mouseleave(function () {
+        $(this).find('g[id="Group-1097"]').attr('fill', '#fff');
+    })
+
+    // 9月6号加入的代码结束
+    var initAddress;
+
+   (function getMobileDevice(window) {
+            var ua = navigator.userAgent;
+            //是否为移动端
+            var mobile = /AppleWebKit.*Mobile.*/.test(ua);
+            //ios终端
+            var ios = /\(i[^;]+;(U;)?CPU.+Mac OS X/.test(ua);
+            //android终端或者uc浏览器
+            var android = /(Android);?[\s\/]+([\d.]+)?/.test(ua);
+            //iphone
+            var iphone = /iphone/i.test(ua);
+            //ipad
+            var ipad = /iPad/i.test(ua);
+            //weixin
+            var weixin = /micromessenger/i.test(ua);
+            //Chrome
+            var chrome = /Chrome\/([\d.]+)/.test(ua) || /CriOS\/([\d.]+)/.test(ua);
+            //火狐内核
+            var mozilla = ua.indexOf('Gecko') > -1 && ua.indexOf('KHTML') == -1;
+            //苹果，谷歌内核
+            var webkit = /AppleWebKit/i.test(ua);
+            //opera内核
+            var opera = /Presto/i.test(ua);
+            //苹果浏览器
+            var safari = /safari/i.test(ua) && !/Chrome/i.test(ua);
+            //微软
+            var msie = /msie/i.test(ua);
+
+            window.deviceMsg = {
+                isMobile: mobile,
+                islos: ios,
+                isAndroid: android,
+                isIPhone: iphone,
+                isIPad: ipad,
+                isWeiXin: weixin,
+                isChrome: chrome,
+                isMozilla: mozilla,
+                isWebkit: webkit,
+                isOpera: opera,
+                isSafari: safari,
+                isMsie: msie
+            }
+        })(window);
+
+   var modelDdata = [];
+
+    //判断是否是PC访问
+    function isPc() {
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function onInit() {
+        if(window.deviceMsg.isMobile && window.deviceMsg.isIPad == false){
+            $('.js-share').show();
+        }
+
+        if(isPc()){
+            $(window).resize(function () {
+                $('.pc-bar').hide();
+                $("#menu-open").prop("checked",false);
+            })
+        }
+
+        //  用户数据统计，区分设备
+        var device = 1;
+        (function deviceFun() {
+            // 默认为不考虑访客
+            if (window.deviceMsg.isMobile) { // 检测当前是否为移动端
+                device = 2;
+                if (window.deviceMsg.isIPad) { // 检测当前是否为ipad
+                    device = 4
+                }
+            } else if (window.deviceMsg.isChrome || window.deviceMsg.isMozilla || window.deviceMsg.isWebkit ||
+                window.deviceMsg.isOpera || window.deviceMsg.isSafari || window.deviceMsg.isMsie) { // 检测是否为浏览器
+                device = 3
+            }
+            // get url request
+            let userId = '';
+            let items_id = '';
+
+            var objQuery = getUrlQuery();
+            if (objQuery) {
+                // 获取数据promise回调
+                space_detail(objQuery)
+                    .then((data) => {
+                        modelDdata = data.data;
+                        //浏览量
+                        $('#chakan').text(data.data.pv);
+                        //点赞
+                        if(data.data.is_praise == 1){
+                            $('.icondianzan').css('color', 'rgb(255, 0, 0)');
+                        }
+                        // 设置模型信息
+                        $('#model-title').text(data.data.title || '未知');
+                        $('.label-address').text(data.data.location || '无');
+                        $('.HUXING').text(data.data.house_type || '无');
+                        $('.mianji').text(data.data.items_area+' ㎡' || '无');
+                        $('.chaoxiang').text(data.data.items_orientation || '无');
+                        $('.xiangqing').text(data.data.description || '无');
+                        // 设置手机
+                        $('#space-phone').attr('href', 'tel:' + data.data.detail_phone || '18620157666' +
+                            '');
+                        $('#dianhua').text(data.data.detail_phone || '无');
+                        $('.lianxiren').text(data.data.detail_username || '无');
+                        // $('.js-telephone').attr('href', 'tel:' + data.data.detail_phone || 18620157666 + '');
+                        // 保存地图数据
+                        initAddress = data.data.address;
+                        longitude = data.data.longitude;
+                        latitude = data.data.latitude;
+                        marker_image = phpimg_url + '/'+data.data.marker_image;
+                        var swiper_image = modelData.slider[0]['src'];
+                        //轮播主图替换
+                        $('.swiper-image').attr('src', swiper_image);
+                        //设置背景图
+                        // $("#smg").css('background-image','url('+marker_image+')');
+                        // $("#smg").css('opacity', '1');
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+
+                seachRequestString(objQuery.urlObj);
+                // 先判断是否有存在localStroge
+                if (sessionStorage.getItem('jsonMsg')) {
+                    // 此处为数据访问
+                    let json = JSON.parse(sessionStorage.getItem('jsonMsg'));
+                    userId = json['user_id'];
+                    items_id = json['id'];
+                    // Statistics(userId, items_id, device, '');
+                } else if (objQuery.urlObj.p) {
+                    // 此处为数据浏览
+                    let dir_name = objQuery.urlObj.p;
+                    // Statistics(userId, items_id, device, dir_name);
+                }
+            }
+        })();
+
+        // Check the bgMusic start +
+        // let audio = document.querySelector('#audio1');
+        // if (modelData.BgMusic) {
+        //     $('.music_icon_off').show();
+        //     let src = modelData.BgMusicLink
+        //     audio.setAttribute('src', src);
+        //     bgMusicClick();
+        // } else {
+        //     $('.music_icon_off').hide();
+        // }
+
+        // function bgMusicClick() {
+        //     $('.music_icon_off').on('click', function (e) {
+        //         e.stopPropagation();
+        //         $(this).toggle();
+        //         $('.on').toggle();
+        //         // open music
+        //         audio.play();
+        //     })
+        //     $('.on').on('click', function (e) {
+        //         e.stopPropagation();
+        //         $(this).toggle();
+        //         $('.music_icon_off').toggle();
+        //         audio.pause();
+        //     })
+        // }
+        // Check the bgMusic end -
+
+
+        // if (modelData.msg) {
+        //     $('#pageTitle').text(modelData.msg['pageTitle']);
+        //
+        //     $('#pageMsg').text(modelData.msg['pageMsg']);
+        //
+        //     $('#pageLocation').text(modelData.msg['pageLocation']);
+        //
+        //     $('#pageUrl').text(modelData.msg['pageUrl']);
+        //
+        //     $('#pageUrl').attr('href', modelData.msg['pageUrl'])
+        //
+        //     $('#pageUrl2').text(modelData.msg['pageUrl']);
+        //
+        //     $('#pageUrl2').attr('href', modelData.msg['pageUrl'])
+        //
+        //     $('title').html(modelData.msg['pageTitle'])
+        //
+        //     // var qrcode = new QRCode(document.getElementById("qrcode"), {
+        //
+        //     //     text: $('#pageUrl').text(),
+        //
+        //     //     width: 174,
+        //
+        //     //     height: 174,
+        //
+        //     //     colorDark : "#000000",
+        //
+        //     //     colorLight : "#ffffff",
+        //
+        //     //     correctLevel : QRCode.CorrectLevel.H
+        //
+        //     // });
+        //
+        // }
+        //
+        // // 检测modelData中的数据。进行控制显示与隐藏
+        // try {
+        //     if (modelData.titleShow === false) {
+        //         // $('.hidebtn').hide(100);
+        //     }
+        //
+        //     if (modelData.playShow === false) {
+        //         // $('#previous').hide(100);
+        //         // $('#play').hide(100);
+        //         // $('#pause').hide(100);
+        //         // $('#next').hide(100);
+        //     }
+        //
+        //     if (modelData.Perspective === false) {
+        //         // $('#mapBtn2D').hide(100);
+        //         // $('#mapBtn3D').hide(100);
+        //     }
+        //
+        //     if (modelData.zoom === false) {
+        //         // $('#pullTab').hide(100);
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        // }
+    }
+
+    function onModelLoaded() {
+        console.log('模型加载完成');
+        $('#inset').fadeIn(500);
+        $('#mianji').fadeIn(500);
+        $('#views').fadeIn(500);
+        $('.pinBottom-container').fadeIn(500);
+        $('.titlebar-text').fadeIn(500);
+        $('.menu').fadeIn(500);
+        $(".loading").fadeOut();
+        getSiteid();//统计接口
+    }
+
+    function onMouseMove(e) {
+
+    }
+
+    function onClick(e) {
+        if (ismouseMoved) return;
+        if (modeSwitch.isOverallMode()) {
+            $('.loading').css('display', 'block');
+        }
+        let pos = module3D.getAnchorPoint();
+
+        $('.swiper_ul li').each(function () {
+            $(this).removeClass('swiperCurrentLi');
+        })
+
+        animateControl.pause("main");
+
+        return true;
+    }
+    var pos;
+    // render tags
+    function onAnimate() {
+
+        // var pos = getWindowPos(-10, 2, -18);
+
+        for (var i = 0; i < modelData.tags.length; i++) {
+
+            pos = getWindowPos(modelData.tags[i].position.x, modelData.tags[i].position.y, modelData.tags[
+                    i]
+                .position.z);
+            // addLabel(modelData.tags[i].sid, pos);
+        }
+
+        $(".mapContainer[origin=true]").find('.movingSpan').get(0).style.transform = 'rotate(' + -(
+            modelData.rotation +
+            getViewDirection() * 180 / Math.PI) + 'deg)';
+
+        $(".mapContainer[origin=true]").find('.movingSpan').get(0).style.transformOrigin = 'center bottom';
+
+        if ($(".mapContainer[origin=false]").length) {
+
+            $(".mapContainer[origin=false]").find('.movingSpan').get(0).style.transform = 'rotate(' + -(
+                modelData.rotation + getViewDirection() * 180 / Math.PI) + 'deg)';
+
+            $(".mapContainer[origin=false]").find('.movingSpan').get(0).style.transformOrigin =
+                'center bottom';
+        }
+
+        $('.Compass-button').css('transform', 'rotate(' + -getViewDirection() * 180 / Math.PI + 'deg)')
+    }
+
+    function onWalkingViewPoint(index, orient) {
+        $('.loading').css('display', 'none');
+        $(".mapContainer[origin=true]").find('.movingSpan').animate({
+            'right': -(modelData.viewPoints[index].x) * 4.49 - 4 + 'px',
+            'bottom': -(modelData.viewPoints[index].z) * 4.7 + 6 + 'px'
+        }, 1500);
+
+
+
+        $(".mapContainer[origin=false]").find('.movingSpan').animate({
+            'right': (-(modelData.viewPoints[index].x) * 4.49 + 6) * $(
+                ".mapContainer[origin=false]").find(
+                'img').width() / $(".mapContainer[origin=true]").find('img').width() + 'px',
+
+            'bottom': (-(modelData.viewPoints[index].z) * 4.7 + 4) * $(
+                ".mapContainer[origin=false]").find(
+                'img').height() / $(".mapContainer[origin=true]").find('img').height() + 'px'
+
+        }, 1500);
+
+    }
+
+    var infoDiv = document.getElementById("info");
+
+    function showInfo(msg) {
+        infoDiv.innerHTML = msg;
+    }
+
+    //返回当前相机俯仰角度[-PI/2, +PI/2]
+
+    function getViewDirectionY() {
+        var dir = new THREE.Vector3();
+        cameraController.getCurrentCamera().getWorldDirection(dir);
+        return Math.atan2(dir.y, dir.x * dir.x + dir.z * dir.z);
+    }
+
+    //根据旋转角度计算移动距离
+    $("body").on("touchmove", function (event) {
+        event.preventDefault;
+    }, false)
+
+    $("body").off("touchmove");
+
+    $('.hidebtn').click(function () {
+
+        if ($('.title_mes').css('display') == 'none') {
+
+            $('.title_mes').css('display', 'block');
+        }
+
+        if ($('.scanTitle')[0].offsetLeft >= 0) {
+            $('.title_mes_main').animate(
+                {
+                    top: -$('.title_mes_main').height() - 72 + 'px'
+                },
+                function () {
+
+                    $('.scanTitle').animate({
+                        left: -$('.scanTitle').width() - 30 + 'px'
+                    }, function () {
+                        $('.title_mes').css('display', 'none')
+                    })
+                })
+
+        } else {
+            $('.scanTitle').animate({
+                left: 20 + 'px'
+            }, function () {
+                $('.title_mes_main').animate(
+                        {
+                            top: 0 + 'px'
+                        }),
+                    function () {
+
+                    }
+            })
+
+        }
+    })
+
+    $('.moreBtn').click(function () {
+        if ($('.title_mes_main')[0].offsetTop >= 0) {
+            $('.title_mes_main').animate(
+                {
+                    top: -$('.title_mes_main').height() - 72 + 'px'
+                },
+                function () {
+                    $('.LorM').html('More');
+                })
+        } else {
+            $('.title_mes_main').animate(
+                {
+                    top: 0 + 'px'
+                },
+                function () {
+                    $('.LorM').html('Less')
+
+                })
+        }
+    })
+    $(".swiper_ul").on("touchmove", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    })
+    $('body').on('click', function (e) {
+        // 第一个
+        
+        $('.titlebar-text-arrow>img').removeClass('active')
+        $('.js-slide-area').removeClass('active');
+        $('.js-modal').removeClass('active').hide();
+    })
+    $('body').on('touchstart', function (e) {
+        // 第一个
+        $('.titlebar-text-arrow>img').removeClass('active')
+        $('.js-slide-area').removeClass('active');
+        $('.js-modal').removeClass('active').hide();
+        $('.js-fold').removeClass('active');
+    })
+    $('.js-fold').on('touchstart', function (e) {
+        e.stopPropagation();
+    })
+    $('.js-modal').on('touchstart', function (e) {
+        e.stopPropagation();
+    })
+</script>
+ <!--<script src="./js/AnimateCommand/videoCommand.js">-->
+ <!--</script>-->
+<!--<script src="./js/VR/VRControls.js"></script>-->
+<!--<script src="./js/VR/VREffect.js"></script>-->
+<!--<script src="./js/VR/webvr-polyfill.js"></script>-->
+<script src="js/stats.min.js"></script>
+
+
+	<!-- js/postprocessing -->
+	<!-- <script src="postprocessing/EffectComposer.js"></script>
+	<script src="postprocessing/MaskPass.js"></script>
+	<script src="postprocessing/RenderPass.js"></script>
+	<script src="postprocessing/ShaderPass.js"></script>
+	<script src="postprocessing/OutlinePass.js"></script>
+
+	<script src="postprocessing/CopyShader.js"></script>
+	<script src="postprocessing/FXAAShader.js"></script> -->
+
+	<!-- <script src="postprocessing/outLine.js"></script> -->
+<script src="./js/bundle.js"></script>
+ <!--<script src="./js/edit.js"></script>-->
+
+<!--<script src="./js/beiKe.js"></script>-->
+
+<!-- <script src="js/vconsole.min.js"></script> -->
+</html>
