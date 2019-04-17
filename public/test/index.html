@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>测试一下</h1>
+    <div>
+        <button onclick="loadXMLDoc()">测试</button>
+    </div>
+    <hr>
+    <div id="myDiv">
+
+    </div>
+</body>
+<script>
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+    }
+	var phone_email='13800138000';
+	var password='lu123456';
+    //http://localhost/test_3/20181026/local_todo/public/index.php/index2/index/index
+    var link="http://localhost/test_3/20181026/ky/todo/todo.kangyun3d.cn/public/index.php/index2/user/user_login?password="+password+"&phone_email="+phone_email;
+    //var link="http://localhost/test_3/20181026/local_todo/public/index.php/index2/user/company_register?name="+name;
+	xmlhttp.open("GET",link,true);
+	xmlhttp.send();
+}
+
+</script>
+</html>

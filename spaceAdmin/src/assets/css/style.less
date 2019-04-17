@@ -1,0 +1,41 @@
+@import '~iview/src/styles/index.less';
+
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url(../iconfont/icon1.woff) format("woff2");
+  font-style: normal;
+}
+
+@font-family: OpenSansRegular,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+
+.ivu-select-dropdown {
+  padding: 0;
+}
+
+.ivu-select-item-selected.ivu-select-item-focus {
+  background-color: #fff;
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}
+
+.ivu-select-item-selected {
+  background-color: inherit;
+  background-color: #fff;
+}
+
+.ivu-select-item-focus {
+  background-color: inherit;
+}
+
+.ivu-select-item-selected, .ivu-select-item-selected:hover {
+  color: inherit;
+}
+
+.ivu-select-item-selected:hover {
+  background-color: #f3f3f3;
+}
+
+.ivu-select-item:not(:last-child) {
+  border-bottom: 1px solid #efefef;
+}

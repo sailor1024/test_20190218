@@ -1,0 +1,91 @@
+/* share弹框样式控制 */
+.dialog-search-input .ivu-input {
+    border:0;
+    font-size:12px;
+    margin-left:6px;
+}
+.dialog-search-input .ivu-input:focus {
+    box-shadow: none;
+}
+.dialog_body-small .ivu-tabs-bar {
+    border-bottom-width:2px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.dialog_body-small .ivu-tabs-ink-bar {
+    height:4px;
+    background-color: #2d8cf0;
+}
+.dialog_body-small .ivu-tabs-tab {
+    font-size:14px;
+    color:#a9a9a9;
+    font-weight:bold;
+    padding:8px 32px;
+}
+.dialog_body-small .ivu-tabs-nav .ivu-tabs-tab-active {
+    color: #333;
+}
+.dialog-tabs-choose .ivu-radio {
+    margin-right:15px;
+}
+.dialog-tabs-choose .ivu-radio-wrapper {
+    margin-right:16px;
+}
+/* .dialog-tabs-choose .ivu-radio-inner:after {
+    background-color: #00B8CD;
+} */
+
+/* 云空间样式控制 */
+.Yun-space-pop-header .ivu-input {
+    padding: 4px 12px;
+    border: 0;
+    width:auto;
+    height:auto;
+    line-height:auto;
+}
+.Yun-space-pop-header .ivu-input:focus {
+    outline:0;
+    box-shadow: none;
+}
+.Yun-space-pop-header .ivu-input-wrapper {
+    width:auto;
+}
+
+.yun-space-hover .ivu-dropdown-item:hover {
+    /* color:#00B8CD */
+}
+.menue li:hover {
+    /* color: #00B8CD */
+}
+
+.EditorDialog .ivu-tabs-bar {
+    margin-bottom:2px;
+}
+.EditorDialog .dialog_box .dialog_body .dialog_content .dialog_body-detail .dialog-arround .dialog_body-tabs-content p {
+    padding-bottom:3px !important;
+    font-size:14px !important;
+}
+
+
+/* 文件夹级联 */
+.Folder .ivu-tree-arrow-open i {
+    font-size:18px;
+    color:#10232D;
+    /* vertical-align: middle; */
+}
+.Folder .ivu-tree-arrow i{
+    font-size:16px;
+}
+.Folder .ivu-tree-title {
+    font-size:16px;
+    vertical-align: text-bottom	
+}
+.Folder .ivu-tree ul {
+    font-size: 15px;
+}
+.userInvite .ivu-select-selection {
+    border-radius:0 !important;
+}
+
+.ivu-radio-inner:after {
+    background-color: #00A1FF;
+}
