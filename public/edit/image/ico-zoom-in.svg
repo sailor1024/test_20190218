@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>ico-zoom-in</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-345.000000, -83.000000)" fill="#000000">
+            <g id="Zoom" transform="translate(285.000000, 83.000000)">
+                <text id="100%" font-family="OpenSans-Semibold, Open Sans" font-size="12" font-weight="500">
+                    <tspan x="25.5546875" y="16">100%</tspan>
+                </text>
+                <path d="M69.5,9 L64.007484,9 C63.4489202,9 63,9.44771525 63,10 C63,10.5561352 63.4510659,11 64.007484,11 L69.5,11 L69.5,16.492516 C69.5,17.0510798 69.9477153,17.5 70.5,17.5 C71.0561352,17.5 71.5,17.0489341 71.5,16.492516 L71.5,11 L76.992516,11 C77.5510798,11 78,10.5522847 78,10 C78,9.44386482 77.5489341,9 76.992516,9 L71.5,9 L71.5,3.50748397 C71.5,2.94892021 71.0522847,2.5 70.5,2.5 C69.9438648,2.5 69.5,2.95106594 69.5,3.50748397 L69.5,9 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

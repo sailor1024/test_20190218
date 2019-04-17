@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Light&amp;Magic</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="./css/contentPanel.css" />
+    <link rel="stylesheet" href="./css/editContent.css" />
+    <link rel="stylesheet" href="./font/iconfont.css" />
+    <link rel="stylesheet" href="./font2/iconfont.css" />
+    <link rel="stylesheet" href="./font3/iconfont.css" />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <style>
+        @font-face {
+            font-family: "iconfont";
+            src: url('./css/PingFangSCRegular.woff') format('woff')
+        }
+
+        @font-face {
+            font-family: 'OpenSansRegular';
+            /*字体名称*/
+            src: url('./font/icon1');
+            /*字体源文件*/
+        }
+
+        @font-face {
+            font-family: '-apple-system,BlinkMacSystemFont,PingFang\ SC,Helvetica\ Neue,STHeiti,Microsoft\ Yahei,Tahoma,Simsun,sans-serif';
+            /*字体名称*/
+            src: url('./font/icon2');
+            /*字体源文件*/
+        }
+
+        body {
+            font-family: Monospace;
+            color: #fff;
+            margin: 0px;
+            overflow: hidden;
+            /*cursor: url(./image/1.cur), move;*/
+        }
+
+        .huxing-name input::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        .huxing-name input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, PingFang\ SC, Helvetica\ Neue, STHeiti, Microsoft\ Yahei, Tahoma, Simsun, sans-serif !important;
+            moz-user-select: -moz-none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #info {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+        }
+
+        #container canvas {
+            width: 100vw !important;
+            height: 100vh !important;
+        }
+
+        #sendpublic {
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            right: 60px;
+            width: 100px;
+            height: 100%;
+        }
+
+        #sendpublic .sendbtna {
+            display: inline-block;
+            background-color: #2d8cf0;
+            width: 72px;
+            height: 43px;
+            line-height: 43px;
+            /* font: 16px/40px'OpenSansRegular'; */
+            text-align: center;
+            margin-top: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            z-index: 999;
+            font-family: OpenSansRegular !important;
+            background: rgba(43, 134, 230, 1);
+            box-shadow: 0px 1px 4px 0px rgba(43, 134, 230, 0.6);
+            border-radius: 22px;
+            padding: 0 !important;
+        }
+
+        .sendbtna:hover {
+            background-color: #495060;
+            color: white;
+        }
+
+        .title_mes {
+            position: absolute;
+            top: 64px;
+            left: 264px;
+            overflow: hidden;
+            display: none;
+            z-index: 1;
+            transition: all 1s ease;
+        }
+
+        .title_mes_top {
+            float: left;
+            font-size: 18px;
+            text-align: center;
+            line-height: 52px;
+            display: flex;
+        }
+
+        .hidebtn {
+            /* float: left; */
+            background: rgba(0, 0, 0, .45);
+            width: 20px;
+            height: 52px;
+            cursor: pointer;
+            position: relative;
+            top: 64px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+            transition: all 1s ease;
+        }
+
+        .title_mes_top .scanTitle {
+            background: rgba(0, 0, 0, .45);
+            border-left: 1px solid #888;
+            /* float: left; */
+            width: 335px;
+            text-align: left;
+            padding-left: 10px;
+            position: relative;
+            left: -500px;
+            z-index: 2;
+        }
+
+        .title_mes_top .scanTitle .moreBtn {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .title_mes_top .scanTitle .moreBtn .icon-xiajiantou {
+            position: relative;
+            top: 2px;
+            cursor: pointer;
+        }
+
+        .title_mes_main {
+            background: rgba(0, 0, 0, .45);
+            margin-left: 20px;
+            margin-top: 52px;
+            width: 335px;
+            padding: 10px;
+            position: relative;
+            top: -500px;
+            z-index: 1;
+            overflow: hidden;
+            /* transition: all 0.5s; */
+        }
+
+        .title_mes_main .description {}
+
+        .title_mes_main .location {
+            margin-top: 10px;
+        }
+
+        .title_mes_main .location .icon-dingwei {
+            padding-right: 5px
+        }
+
+        .title_mes_main .link {
+            margin-top: 13px;
+            border-top: 1px solid #fff;
+        }
+
+        .title_mes_main .link .icon-link {
+            padding-right: 5px
+        }
+
+        .switch label .lever:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 21px;
+            height: 21px;
+            background-color: #F1F1F1;
+            border-radius: 21px;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+            left: 0px;
+            top: -3px;
+            transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+        }
+
+        .lever.active {
+            background-color: rgb(0, 161, 255) !important;
+        }
+
+        .lever.active:after {
+            background-color: #fff !important;
+            left: 19px !important;
+        }
+
+        #inset {
+            width: 215px;
+            height: 221px;
+            position: relative;
+            background-color: #1e1e1e;
+            /*background-color: rgba(0, 0, 0, 1);*/
+            border-radius: 15px;
+            border: 0px solid black;
+            /* or none; */
+
+            margin: 0 auto;
+
+            z-index: 100;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*display: none;*/
+        }
+
+        #inset p {
+            width: 100%;
+            line-height: 30px;
+            text-align: center;
+            color: hsla(0, 0%, 100%, .9);
+            text-shadow: 1px 1px 1px #000;
+            position: absolute;
+        }
+
+        #minimap {
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            position: absolute;
+        }
+
+        .ApartmentMap-show #inset {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: #484848;
+            /*background-color: rgba(0, 0, 0, 1);*/
+            border-radius: 15px;
+            border: 1px solid #cccccc;
+            /* or none; */
+            margin: 0 auto;
+            z-index: 100;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*display: none;*/
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="Vue" style="width:100%;height:100%;">
+        <div class="beijingyinyueShow">
+            <div class="beijingyinyueShow-content">
+                <div class="bgMusic-upload">
+                    <i class="iconfont icon-quxiao" style="display: none"></i>
+                    <p>请上传背景音乐</p>
+                    <div class="Media-box">
+                        <input type="text" name="" placeholder="键入链接或者上传音频" />
+                        <a id="chooseBgMusicUpload" class="waves-effect fileuploadbtn waves-light btn">上传</a>
+                    </div>
+                    <div class="BgmusicConfrim">
+                        <div class="btnGroup">
+                            <a class="waves-effect waves-light btn BgmusicCancle ">取消</a>
+                            <a class="waves-effect waves-light btn BgmusicOk blue">完成</a>
+                        </div>
+                        <form id="uploadFormBgmusic" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" id="uploadFileBgmusic" style="visibility: hidden; position: absolute; top: 0px; width: 0px;"
+                                accept="audio/*">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="MeshTip">
+            <img src="./image/OperationHelp.png" />
+        </div>
+        <div class="shadowLoading">
+            <div class="shadowLoading-content">
+                <p>加载中...</p>
+                <div class="shadowLoading-svg">
+                    <img src="./image/oval.svg" />
+                </div>
+                <img src="./image/logo.png" />
+            </div>
+        </div>
+        <div class="InterceptScreen">
+            <div class="danmu"></div>
+            <div class="exit"></div>
+            <div class="ProgressLog">
+                <div>
+                    <span>截屏保存中...</span>
+                    <div class="progress">
+                        <div class="determinate" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="InterceptScreen-content">
+                <div class="InterceptScreen-content-left">
+                    <div class="assect">
+                        <p>Assets</p>
+                        <i class="iconfont icon-yincangbukejian"></i>
+                    </div>
+                    <div class="jietukaishi"></div>
+                    <div class="add">
+                        <img src="./image/ico-zoom-out.svg" data-index="cup" />
+                        <p>100%</p>
+                        <img src="./image/ico-zoom-in.svg" data-index="add" />
+                    </div>
+                </div>
+            </div>
+            <div class="InterceptScreen-change">
+                <div class="InterceptScreen-change2D">
+                    <img src="./image/screenOne.svg" />
+                </div>
+                <div class="InterceptScreen-change3D">
+                    <img src="./image/screenTwo.svg" />
+                </div>
+            </div>
+        </div>
+        <div class="listLimask" style="background: rgba(0,0,0,0.2);width: 100%;height:100%;position: absolute;top:0;left: 0;z-index: 9;display: none"></div>
+        <div id="editContent">
+            <header class="header" style="position: relative;">
+                <div class="header-container">
+                    <img style="width:183px;height:21px;margin-left: 15px;" src="./image/logo.png" alt="" />
+                </div>
+                <div class="header-Title">
+                    <p>康云科技</p>
+                </div>
+                <div id="sendpublic">
+                    <!-- <a class="waves-light sendbtna" style="color: #fff">发布</a> -->
+                    <a class="waves-effect waves-light btn sendbtna">发布</a>
+                </div>
+                <i class="iconfont icon-quxiao" @click.stop="closeIframe"></i>
+            </header>
+            <!-- session -->
+            <main class="content">
+                <!-- 左侧导航栏 -->
+                <div class="content-container">
+                    <div class="content-nav-left">
+                        <!-- 导航栏顶部tab按钮 -->
+                        <div class="top-tabs" style="display:none;">
+                            <div class="btnLeft activeColor">
+                                <span class="top-tabs-Msg active">项目管理</span>
+                            </div>
+                            <div class="btnRight">
+                                <span class="top-tabs-Msg">360&deg;全景</span>
+                            </div>
+                        </div>
+                        <!-- 导航列表 -->
+                        <div class="tab-list">
+                            <!-- first列表 -->
+                            <div class="first-bar">
+                                <ul class="first-list">
+                                    <li class="list-down">
+                                        <div class="first-list-name">
+                                            <i class=" material-icons">insert_chart</i>
+                                            <!-- <i class="font_family icon-icon-test21"></i> -->
+                                            <span>热点管理</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds mattertagList">
+                                        </ul>
+                                    </li>
+                                    <li class="list-down">
+                                        <div class="first-list-name">
+                                            <i class=" material-icons">settings_power</i>
+                                            <!-- <i class="font_family icon-icon-test21"></i> -->
+                                            <span>显示控制</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds buttonShow">
+                                            <li data-index="1" style="display:none">
+                                                <span>标题与简介</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="male" class="chooseBtn">
+                                                        <span class="lever active" for="male"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li data-index="2">
+                                                <span>播放按钮</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="yulan" class="chooseBtn">
+                                                        <span class="lever active" for="yulan"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li data-index="3">
+                                                <span>透视图按钮</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="moxing" class="chooseBtn">
+                                                        <span class="lever active" for="moxing"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li data-index="4">
+                                                <span>图集按钮</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="tuji" class="chooseBtn">
+                                                        <span class="lever" for="tuji"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li data-index="5">
+                                                <span>标签按钮</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="biaoqian" class="chooseBtn">
+                                                        <span class="lever active" for="biaoqian"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li data-index="6">
+                                                <span>背景音乐</span>
+                                                <div class="switch">
+                                                    <label>
+                                                        <input type="checkbox" name="sex" id="backgroundMusic" class="chooseBtn">
+                                                        <span class="lever" for="backgroundMusic"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <!--             <li data-index="1"> <span>标题与简介</span> <input type="checkbox" name="sex" id="male" class="chooseBtn" /> <label for="male" class="choose-label" :class="[biaotiShow === true ? 'active active1' : '']"></label> </li>
+            <li data-index="2"> <span>播放按钮</span> <input type="checkbox" name="sex" id="yulan" class="chooseBtn" /> <label for="yulan" class="choose-label" :class="[yulanShow === true ? 'active active1' : '']"></label> </li>
+            <li data-index="3"> <span>透视图按钮</span> <input type="checkbox" name="sex" id="moxing" class="chooseBtn" /> <label for="moxing" class="choose-label" :class="[moxingShow === true ? 'active active1' : '']"></label> </li>
+            <li data-index="4"> <span>图集按钮</span> <input type="checkbox" name="sex" id="tuji" class="chooseBtn" /> <label for="tuji" class="choose-label" :class="[tujiShow === true ? 'active active1' : '']"></label> </li>
+            <li data-index="5"> <span>标签按钮</span> <input type="checkbox" name="sex" id="biaoqian" class="chooseBtn" /> <label for="biaoqian" class="choose-label" :class="[biaoqian === true ? 'active active1' : '']"></label> </li>
+            <li data-index="6"> <span>背景音乐</span> <input type="checkbox" name="sex" id="backgroundMusic" class="chooseBtn" /> <label for="backgroundMusic" class="choose-label" :class="[backgroundMusic === true ? 'active active1' : '']"></label> </li>  -->
+                                        </ul>
+                                    </li>
+                                    <li class="list-down">
+                                        <div class="first-list-name">
+                                            <i class="iconfont icon-weibiaoti1" style="font-size: 12px;font-weight: 800;"></i>
+                                            <!-- <i class="font_family icon-icon-test21"></i> -->
+                                            <span>测量管理</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds RulerManagement">
+                                        </ul>
+                                    </li>
+                                    <li class="list-down">
+                                        <div class="first-list-name">
+                                            <i class="iconfont icon-biaoqian" style="font-size: 12px;font-weight: 800; padding-right: 11px"></i>
+                                            <span>标签管理</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds LabelManagement">
+                                        </ul>
+                                    </li>
+                                    <li class="list-down">
+                                        <div class="first-list-name">
+                                            <i class="iconfont icon-two" style="font-size: 12px;font-weight: 800; padding-right: 11px"></i>
+                                            <span>贴图管理</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds MapManagement">
+                                        </ul>
+                                    </li>
+                                    <li class="list-down" style="margin-bottom:20px;">
+                                        <div class="first-list-name">
+                                            <i class=" material-icons" style="padding-right: 10px;font-size: 14px;">tab_unselected</i>
+                                            <!-- <i class="font_family icon-icon-test21"></i> -->
+                                            <span>截屏管理</span>
+                                            <div>
+                                                <i class="iconfont icon-icon_sanjiaoxing-copy icon-Slider"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="Blinds snapshotList">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Second列表  -->
+                            <div class="slide">
+                                <i class="iconfont icon-arrow-left"></i>
+                            </div>
+                        </div>
+                        <!-- 收起按钮 -->
+                    </div>
+                    <!-- 内容区域 -->
+                    <div class="content-view">
+                        <!-- 顶部nav start-->
+                        <div class="content-nav-top">
+                            <!-- <div class="content-nav-header"></div> -->
+                            <div class="nav-top-center">
+                                <div class="nav-icon-left">
+                                    <div class="icon-left-show">
+                                        <div class="left-show-btn snapshot">
+                                            <i class="iconfont icon-jietu"></i>
+                                            <p>截屏</p>
+                                        </div>
+                                        <div class="left-show-btn guild">
+                                            <i class="iconfont icon-daolan"></i>
+                                            <p>导览</p>
+                                        </div>
+                                        <div class="left-show-btn measure">
+                                            <i class="iconfont icon-celiang"></i>
+                                            <p>测量</p>
+                                        </div>
+                                        <div class="left-show-btn labelIcon">
+                                            <i class="iconfont icon-biaoqian"></i>
+                                            <p>标签</p>
+                                        </div>
+                                        <div class="left-show-btn matterIcon">
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-yuan1 "></i>
+                                            <p>热点</p>
+                                        </div>
+                                        <div class="left-show-btn MapVideo">
+                                            <div>
+                                                <ul>
+                                                    <li data-index="1">实时监控</li>
+                                                    <li data-index="2">普通视频</li>
+                                                    <li data-index="3">透明视频</li>
+                                                </ul>
+                                            </div>
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-two"></i>
+                                            <p>贴图</p>
+                                        </div>
+                                        <div class="left-show-btn bgmusic">
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-yinle"></i>
+                                            <p>背景音乐</p>
+                                        </div>
+                                        <div class="left-show-btn huxingtu">
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-daohangtu"></i>
+                                            <p>导航图</p>
+                                        </div>
+                                        <div class="left-show-btn ApartmentMap">
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-huxingtu"></i>
+                                            <p>户型图</p>
+                                        </div>
+                                        <div class="left-show-btn EntranceDoors">
+                                            <!-- <i class="iconfont icon-biaoqian"></i> -->
+                                            <i class="iconfont icon-ruhumen"></i>
+                                            <p>入户门</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav-icon-right">
+                                <div class="nav-icon-right-top">
+                                    <i class="iconfont icon-three" style="color:#fff;font-size: 20px;"></i>
+                                </div>
+                                <div class="nav-icon-right-bottom">
+                                    <p class="caonima">视图</p>
+                                </div>
+                                <i class="iconfont icon-xiajiantou" style="font-size: 12px;"></i>
+                                <!-- 下拉菜单 -->
+                                <div class="nav-icon-right-list">
+                                    <ul>
+                                        <li data-index="0"> <i class="iconfont icon-cubelifangti" style="font-size: 16px;margin-left: 2px;"></i>
+                                            <span style="margin-left: 15px;">模型面</span> </li>
+                                        <li data-index="1"> <i class="iconfont icon-three"></i> <span>漫游模式</span> </li>
+                                        <li data-index="2"> <i class="iconfont icon-four"></i> <span>3D模型</span> </li>
+                                        <li data-index="3"> <i class="iconfont icon-five"></i> <span>2D平面</span> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 顶部nav end-->
+                        <div class="Guide">
+                            <div class="GuideContainer">
+                                <div class="GuideContainer-closeing">
+                                    <span>关闭</span>
+                                    <i class="iconfont icon-quxiao"></i>
+                                </div>
+                                <p class="GuideContainer-header"> <span class="GuideContainer-title">制作精彩片段</span>
+                                    <span>拖动缩略图至下方，制作一个观赏空间的精彩片段</span>
+                                </p>
+                                <div class="GuideContainer-list">
+                                    <div class="GuideContainer-list-type">
+                                        <span>观赏类型</span>
+                                        <div>
+                                            <div data-index="1">
+                                                <div id="huandengpian">
+                                                    <span class="active"></span>
+                                                </div>
+                                                <label for="huandengpian">幻灯模式</label>
+                                            </div>
+                                            <div data-index="2">
+                                                <div id="xingzou">
+                                                    <span></span>
+                                                </div>
+                                                <label for="xingzou">行走模式</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="GuideContainer-items">
+                                        <!--                                         <li>
+                                            <div class="GuideContainer-status"><i class="iconfont icon-three"></i></div>
+                                            <div class="GuideContainer-msg"><span>photo2</span></div>
+                                            <div class="listRomove"><span>-</span></div>
+                                            <img src="./image/background - 副本.jpg">
+                                        </li>  -->
+                                    </ul>
+                                    <div class="GuideContainer-items-bottom-content">
+                                        <div class="GuideSlider">
+                                            <span>关闭</span>
+                                            <i class="iconfont icon-arrow-left"></i>
+                                        </div>
+                                        <div class="GuideRemove">
+                                            删除所有
+                                        </div>
+                                        <!-- 拖拽提示 -->
+                                        <p class="GuideTopics">拖拽图片到这</p>
+                                        <ul id="GuideContainer-items-bottom">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iconfont icon-zuojiantou hidebtn" style="line-height:52px;position: absolute;top: 64px;left: 264px;z-index: 2"></div>
+                        <div style="width:100%; height:100%;">
+                            <div id="container">
+                                <div class="ControlMessage">
+                                    <div class="ControlMessage-top"></div>
+                                    <div class="ControlMessage-bottom"></div>
+                                </div>
+                                <div class="title_mes">
+                                    <div class="title_mes_top">
+                                        <div class="scanTitle" id="pageTitle" style="">
+                                            <div class="scanTitle-title">
+                                                <span>Presented by<a>常平国际常新港</a></span>
+                                                <p style="width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">Light&amp;Magic</p>
+                                            </div>
+                                            <span class="moreBtn"> <span class="LorM" style="font-size: 12px;">Less</span>
+                                                <span class="iconfont icon-xiajiantou" style="font-size: 12px;"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="title_mes_main">
+                                        <p class=""><span v-text="pageMsg" id="pageMsg" style="font-size: 14px;"></span>
+                                        </p>
+                                        <div class="peopleMsg">
+                                            <div class="peopleMsg-name">
+                                                <i class="iconfont icon-portrait"></i>
+                                            </div>
+                                            <div class="peopleMsg-phone">
+                                                <p style="font-size: 14px;">刘先生</p>
+                                                <span style="font-size: 14px;">13800138000</span>
+                                                <a style="font-size: 14px;">919170391@qq.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="location">
+                                            <span class="iconfont icon-dingwei"></span>
+                                            <span v-text="pageLocation" id="pageLocation" style="font-size: 14px;">科汇金谷</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="titleBarLeft">
+                                    <span id="leftspanname" style="display: none">恐龙馆</span>
+                                </div>
+                                <div class="right_iconlist">
+                                    <div class="hidden_iconlist">
+                                        <div id="gui-fullscreen" class="ui-icon wide" data-placement="top" title="全屏">
+                                            <a> <img src="image/enlarge.svg" alt="" rel="tooltip" title="全屏" class="circle responsive-img" />
+                                            </a>
+                                        </div>
+                                        <div id="gui-fullscreen-exit" class="ui-icon wide" data-placement="top" style="display: none;"
+                                            title="缩屏">
+                                            <a rel="tooltip" title="缩屏"> <img src="image/narrow.svg" alt="" /> </a>
+                                        </div>
+                                        <div title="位置">
+                                            <a href="../../bmap/"> <img src="image/location.svg" alt="" /> </a>
+                                        </div>
+                                        <div id="vr" class="ui-icon wide hidden" title="VR">
+                                            <img src="image/VR.svg" alt="" rel="tooltip" title="{[{ VIEW_IN_VR }]}" />
+                                        </div>
+                                        <div id="sharing" class="ui-icon wide hidden" data-placement="top">
+                                            <img src="image/share.svg" alt="" rel="tooltip" title="分享" />
+                                        </div>
+                                        <div class="show_codebtn" title="二维码">
+                                            <img src="image/QR.svg" alt="" />
+                                        </div>
+                                        <div id="sharing" class="ui-icon wide hidden" data-placement="top">
+                                            <img src="image/setting.svg" alt="" rel="tooltip" title="设置" />
+                                        </div>
+                                    </div>
+                                    <div class="more_icon" style="display: none">
+                                        <img src="image/more.svg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="code_mask"></div>
+                                <div class="show_code">
+                                    <div class="code_warp">
+                                    </div>
+                                </div>
+                                <div class="mapContainer" origin="true">
+                                    <div class="mapImg" style="display: none">
+                                        <img src="./image/smallmap.png" alt="" />
+                                        <span class="movingSpan"></span>
+                                    </div>
+                                    <div class="mapBtnGroup">
+                                    </div>
+                                </div>
+                                <div class="pinBottom-container">
+                                    <div class="pinBottom left highlightExists">
+                                        <div class="viewContainerPc" style="background:rgba(0, 0, 0, .25);border-radius:20px;">
+                                            <div id="pullTab" class="ui-icon darkGlass" style="display: none;margin-top: 2px;">
+                                                <a class="hasHover"> <i class="iconfont icon-two" style="font-size:20px;color:#fff;"></i>
+                                                </a>
+                                            </div>
+                                            <div id="pullTab-show" class="ui-icon darkGlass" style="display: none;margin-top: 2px;">
+                                                <a class="hasHover"> <i class="iconfont icon-two" style="font-size:28px;color:#fff;"></i>
+                                                </a>
+                                            </div>
+                                            <div id="previous" class="previous ui-icon" style="margin-top: 5px;display: none;">
+                                                <a class="hasHover">
+                                                    <i class="iconfont icon-arrow-left" style="color:#fff;font-size: 20px;"></i>
+                                                    <!-- <svg width="28px" height="28px" viewbox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <title>zuo</title>
+               <desc>
+                Created with Sketch.
+               </desc>
+               <defs></defs>
+               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path d="M18.065231,20.3886067 C18.2784726,20.5640566 18.3091087,20.8791533 18.1336588,21.0923948 C17.9582089,21.3056363 17.6431123,21.3362725 17.4298707,21.1608226 L9.18232017,14.3749396 C8.93577703,14.1720899 8.93991793,13.7932831 9.19083649,13.5958714 L17.4383871,7.10706087 C17.655413,6.9363144 17.9697646,6.97383131 18.1405111,7.19085724 C18.3112576,7.40788317 18.2737407,7.72223481 18.0567147,7.89298128 L10.2975517,13.99755 L18.065231,20.3886067 Z" id="Path-30" fill="#FFFFFF" fill-rule="nonzero"></path>
+               </g>
+              </svg>  -->
+                                                </a>
+                                            </div>
+                                            <div id="previous-show" class="previous ui-icon" style="display: none;margin-top: 5px;">
+                                                <a class="hasHover">
+                                                    <i class="iconfont icon-arrow-left" style="color:#fff;font-size: 20px;"></i>
+                                                    <!-- <svg width="28px" height="28px" viewbox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <title>zuo</title>
+               <desc>
+                Created with Sketch.
+               </desc>
+               <defs></defs>
+               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path d="M18.065231,20.3886067 C18.2784726,20.5640566 18.3091087,20.8791533 18.1336588,21.0923948 C17.9582089,21.3056363 17.6431123,21.3362725 17.4298707,21.1608226 L9.18232017,14.3749396 C8.93577703,14.1720899 8.93991793,13.7932831 9.19083649,13.5958714 L17.4383871,7.10706087 C17.655413,6.9363144 17.9697646,6.97383131 18.1405111,7.19085724 C18.3112576,7.40788317 18.2737407,7.72223481 18.0567147,7.89298128 L10.2975517,13.99755 L18.065231,20.3886067 Z" id="Path-30" fill="#FFFFFF" fill-rule="nonzero"></path>
+               </g>
+              </svg>  -->
+                                                </a>
+                                            </div>
+                                            <div id="play" class="ui-icon" style="display: none;">
+                                                <a class="hasHover"> <i class="iconfont icon-six" style="font-size:28px;color:#fff;"></i>
+                                                </a>
+                                            </div>
+                                            <div id="play-show" class="ui-icon" style="display: none;">
+                                                <a class="hasHover"> <i class="iconfont icon-six" style="font-size:28px;color:#fff;"></i>
+                                                </a>
+                                            </div>
+                                            <div id="pause" class="ui-icon" style="display: none;">
+                                                <a class="hasHover"> <i class="iconfont icon-one" style="font-size:28px;color:#fff;"></i>
+                                                </a>
+                                            </div>
+                                            <div id="next" class="next ui-icon wide" style="display: none; margin-top: 5px;">
+                                                <a class="hasHover">
+                                                    <i class="iconfont icon-arrow-right-copy" style="color:#fff;font-size: 20px;"></i>
+                                                    <!-- <svg width="28px" height="28px" viewbox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <title>you</title>
+               <desc>
+                Created with Sketch.
+               </desc>
+               <defs></defs>
+               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group-1097" transform="translate(14.000000, 14.000000) scale(-1, 1) translate(-14.000000, -14.000000) " fill="#FFFFFF" fill-rule="nonzero">
+                 <path d="M18.065231,20.3886067 C18.2784726,20.5640566 18.3091087,20.8791533 18.1336588,21.0923948 C17.9582089,21.3056363 17.6431123,21.3362725 17.4298707,21.1608226 L9.18232017,14.3749396 C8.93577703,14.1720899 8.93991793,13.7932831 9.19083649,13.5958714 L17.4383871,7.10706087 C17.655413,6.9363144 17.9697646,6.97383131 18.1405111,7.19085724 C18.3112576,7.40788317 18.2737407,7.72223481 18.0567147,7.89298128 L10.2975517,13.99755 L18.065231,20.3886067 Z" id="Path-30-Copy"></path>
+                </g>
+               </g>
+              </svg>  -->
+                                                </a>
+                                            </div>
+                                            <div id="next-show" class="next ui-icon wide" style="display: none; margin-top: 5px;">
+                                                <a class="hasHover">
+                                                    <i class="iconfont icon-arrow-right-copy" style="color:#fff;font-size: 20px;"></i>
+                                                    <!-- <svg width="28px" height="28px" viewbox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <title>you</title>
+               <desc>
+                Created with Sketch.
+               </desc>
+               <defs></defs>
+               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group-1097" transform="translate(14.000000, 14.000000) scale(-1, 1) translate(-14.000000, -14.000000) " fill="#FFFFFF" fill-rule="nonzero">
+                 <path d="M18.065231,20.3886067 C18.2784726,20.5640566 18.3091087,20.8791533 18.1336588,21.0923948 C17.9582089,21.3056363 17.6431123,21.3362725 17.4298707,21.1608226 L9.18232017,14.3749396 C8.93577703,14.1720899 8.93991793,13.7932831 9.19083649,13.5958714 L17.4383871,7.10706087 C17.655413,6.9363144 17.9697646,6.97383131 18.1405111,7.19085724 C18.3112576,7.40788317 18.2737407,7.72223481 18.0567147,7.89298128 L10.2975517,13.99755 L18.065231,20.3886067 Z" id="Path-30-Copy"></path>
+                </g>
+               </g>
+              </svg>  -->
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="viewContainerCommon">
+                                            <div class="playingHide">
+                                                <div id="monirenxing" class="next ui-icon">
+                                                    <a class="hasHover"> <i class="iconfont icon-three" style="display:none;font-size:28px;color:#fff;"></i>
+                                                    </a>
+                                                </div>
+                                                <div id="mapBtn2D" class="next ui-icon ">
+                                                    <a class="hasHover"> <i class="iconfont icon-five" style="display:none;font-size:28px;color:#fff;"></i>
+                                                    </a>
+                                                </div>
+                                                <div id="mapBtn3D" class="next ui-icon" style="margin:0 8px; display: none;">
+                                                    <a class="hasHover"> <i class="iconfont icon-four" style="font-size:28px;color:#fff;"></i>
+                                                    </a>
+                                                </div>
+                                                <div id="mapBtn3D-show" class="next ui-icon" style="margin:0 8px; display: none;">
+                                                    <a class="hasHover"> <i class="iconfont icon-four" style="font-size:28px;color:#fff;"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="music_icon_off  ui-icon">
+                                                    <img src="image/music.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <ul class="guideList">
+                                                <li>恐龙介绍</li>
+                                                <li>视频介绍</li>
+                                                <li>文物介绍</li>
+                                                <li class="audioProcess"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="swiper">
+                                        <ul class="swiper_ul">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Constellation-css3d Constellation-css3d-hidden-moment" data-region="css3d"
+                                style=" perspective: 470.9px;display: none;position: fixed;left: 10%;top:10%" id="labelBoard">
+                                <div class="Css3dRenderer" style="width: 1745px; height: 863px;">
+                                    <!-- transform-style: preserve-3d; transform-origin: 50% 50% 0px;  transform: translate3d(0px, 0px, 470.9px) matrix3d(-0.655685, 0.0874734, 0.749962, 0, 0, -0.993281, 0.115853, 0, -0.755035, -0.0759633, -0.651279, 0, 0, 0, 0, 1) translate3d(872.5px, 431.5px, 0px); -->
+                                    <!-- transform: translate3d(-50%, -50%, 0px) matrix3d(-0.66765, 0, -0.74446, 0, 0.07075, -0.99547, -0.06345, 0, 0.74109, 0.09503, -0.66463, 0, -336.862, -43.1994, 302.108, 1); opacity: 1; -->
+                                    <div class="Moment is-active">
+                                        <!-- top:-50%;left:-50%;transform:translate(-50%,-50%) -->
+                                        <div class="Moment-item">
+                                            <div class="Moment-inner">
+                                                <div class="Moment-content">
+                                                    <div class="Moment-hotspot" data-region="hotspot">
+                                                        <div class="HotspotStill HotspotStill--inline-image HotspotStill--Moment">
+                                                            <div class="HotspotStill-inner">
+                                                                <div class="HotspotStill-item">
+                                                                    <div class="HotspotStill-item-inner">
+                                                                        <span class="HotspotStill-icon">
+                                                                            <svg preserveaspectratio="xMinYMin meet"
+                                                                                class="Icon Icon--mapimage" role="img"
+                                                                                id="mapimage" viewbox="0 0 612 792">
+                                                                                <title>mapimage icon</title>
+                                                                                <g>
+                                                                                    <path d="M540.2,385.5c-0.3-16.5-1.9-33-3.1-49.5c-0.9-12.2-3.3-24.1-7.2-35.7c-4.4-13.1-11.7-24-23.4-31.7c-10.3-6.8-21.9-9.7-34-10.5c-15.5-1-34.4-2.1-49.9-2.6c-2.3-0.1-4.7-0.1-7-0.2l-42.5-46.5H232l-42.7,46.7c-13.7,0.6-23.9,1.1-37.6,1.8c-8.4,0.5-16.8,1.1-25,2.8c-17.4,3.6-31.2,12.8-39.6,28.8c-5.9,11.1-9.3,23.2-10.8,35.6c-1.5,12.2-2.4,24.5-3.3,36.8c-2.3,29.9-1.6,59.9-1.1,89.8c0.3,16.4,1.9,32.9,3.1,49.3c0.9,12.7,3.6,25.1,7.7,37.2c6.7,19.3,19.7,31.8,39.4,36.9c8.5,2.2,17.2,3.6,26,4.3c14.1,1.2,28.2,1.8,42.4,2.3c16.8,0.6,33.6,1.1,50.5,1.4c20.5,0.4,41,0.8,61.5,0.9c20.1,0,40.2-0.3,60.4-0.6c10.2-0.1,20.5-0.3,30.7-0.7c21.5-0.8,42.9-1.6,64.4-2.8c9.1-0.5,18.2-1.1,27.1-2.8c18-3.6,32.1-13.2,40.6-29.9c5.5-10.9,8.8-22.5,10.3-34.6c1.5-12.2,2.4-24.5,3.3-36.8C541.3,445.2,540.7,415.3,540.2,385.5z M306,522.9c-57.8,0-104.6-46.9-104.6-104.8S248.2,313.3,306,313.3s104.6,46.9,104.6,104.8S363.8,522.9,306,522.9z"></path>
+                                                                                    <path d="M306,350.4c-37.4,0-67.7,30.3-67.7,67.7s30.3,67.7,67.7,67.7s67.6-30.3,67.6-67.7C373.7,380.7,343.4,350.4,306,350.4z"></path>
+                                                                                </g>
+                                                                            </svg> </span>
+                                                                    </div>
+                                                                    <div class="HotspotStill-itemVisited">
+                                                                        <span class="HotspotStill-iconTick"> <i class="Icon Icon--tickNew"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="HotspotStill-title">
+                                                                    The Beatles live
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="Moment-body">
+                                                        <div id="imgDescribe" class="Moment-body-item">
+                                                            The hunting grounds of a Tyrannosaurus Rex with two
+                                                            Quetzalcoatlus patrolling the skies in the background.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="Moment-nav">
+                                                    <button data-tooltip="Close" class="IconButton IconButton--close"
+                                                        data-js="close">
+                                                        <svg preserveaspectratio="xMinYMin meet" class="Icon Icon--close"
+                                                            role="img" id="close" viewbox="0 0 24 24">
+                                                            <title>close icon</title>
+                                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                                        </svg> </button>
+                                                    <div class="Moment-share" data-region="share">
+                                                        <div class="Share">
+                                                            <button data-tooltip="Share" class="IconButton IconButton--share Share-toggle"
+                                                                data-js="toggle">
+                                                                <svg preserveaspectratio="xMinYMin meet" class="Icon Icon--share"
+                                                                    role="img" id="share" viewbox="0 0 24 24">
+                                                                    <title>share icon</title>
+                                                                    <path d="M5.9 14.9c.8 0 1.5-.3 2-.8l7.1 4.1c-.1.2-.1.5-.1.7 0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3c-.8 0-1.5.3-2 .8l-7.1-4.1c.1-.2.1-.5.1-.7s0-.5-.1-.7L15.9 7c.5.5 1.2.8 2 .8 1.6 0 2.9-1.3 2.9-2.9S19.5 2 17.9 2 15 3.3 15 4.9c0 .2 0 .4.1.7L8 9.8C7.5 9.3 6.8 9 6 9c-1.7 0-3 1.3-3 3s1.2 2.9 2.9 2.9z"></path>
+                                                                </svg> </button>
+                                                            <div class="Share-list-cover">
+                                                                <ul class="Share-list">
+                                                                    <li class="Share-item"> <button class="IconButton IconButton--shareItem"
+                                                                            data-js="share-googleplus">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                viewbox="0 0 48 48" preserveaspectratio="xMinYMin meet"
+                                                                                class="Icon Icon--googleplus" role="img"
+                                                                                id="googleplus">
+                                                                                <path d="M48,22h-5v-5h-4v5h-5v4h5v5h4v-5h5 M16,21v6.24h8.72c-0.67,3.76-3.93,6.5-8.72,6.5c-5.28,0-9.57-4.47-9.57-9.75
+                                                        s4.29-9.74,9.57-9.74c2.38,0,4.51,0.82,6.19,2.42v0.01l4.51-4.51C23.93,9.59,20.32,8,16,8C7.16,8,0,15.16,0,24s7.16,16,16,16
+                                                        c9.24,0,15.36-6.5,15.36-15.64c0-1.17-0.11-2.29-0.31-3.36C31.05,21,16,21,16,21z"></path>
+                                                                            </svg> </button> </li>
+                                                                    <li class="Share-item"> <button class="IconButton IconButton--shareItem"
+                                                                            data-js="share-twitter">
+                                                                            <svg preserveaspectratio="xMinYMin meet"
+                                                                                class="Icon Icon--twitter" role="img"
+                                                                                id="twitter" viewbox="-235.5 524.5 24 24">
+                                                                                <title>twitter icon</title>
+                                                                                <path d="M-211.976 529.44c-.81.36-1.68.602-2.594.71.933-.558 1.65-1.443 1.986-2.498-.873.518-1.84.894-2.868 1.096-.824-.878-1.998-1.426-3.297-1.426-2.494 0-4.516 2.022-4.516 4.517 0 .353.04.698.117 1.028-3.753-.188-7.08-1.987-9.31-4.72-.388.668-.61 1.444-.61 2.272 0 1.567.796 2.95 2.008 3.76-.74-.023-1.437-.227-2.046-.565v.057c0 2.188 1.557 4.014 3.623 4.43-.38.102-.778.158-1.19.158-.29 0-.574-.028-.85-.08.575 1.793 2.243 3.1 4.22 3.136-1.547 1.212-3.494 1.934-5.61 1.934-.366 0-.725-.02-1.078-.063 2 1.282 4.373 2.03 6.924 2.03 8.31 0 12.853-6.884 12.853-12.853 0-.196-.004-.39-.013-.584.883-.64 1.65-1.434 2.254-2.34z"></path>
+                                                                            </svg> </button> </li>
+                                                                    <li class="Share-item"> <button class="IconButton IconButton--shareItem"
+                                                                            data-js="share-facebook">
+                                                                            <svg preserveaspectratio="xMinYMin meet"
+                                                                                class="Icon Icon--facebook" role="img"
+                                                                                id="facebook" viewbox="-441.5 318.5 24 24">
+                                                                                <title>facebook icon</title>
+                                                                                <path d="M-423.624 319.518l-2.794-.004c-3.14 0-5.168 2.08-5.168 5.303v2.445h-2.81c-.243 0-.44.197-.44.44v3.543c0 .243.198.44.44.44h2.81v8.938c0 .243.197.44.44.44h3.665c.242 0 .438-.198.438-.44v-8.94h3.285c.243 0 .44-.196.44-.438v-3.543c0-.117-.046-.228-.13-.31-.08-.083-.193-.13-.31-.13h-3.286v-2.073c0-.997.237-1.503 1.535-1.503h1.883c.243 0 .44-.198.44-.44v-3.29c0-.242-.196-.44-.44-.44z"></path>
+                                                                            </svg> </button> </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="Moment-media" data-js="lookat">
+                                                    <div class="FlexEmbed">
+                                                        <div class="FlexEmbed-ratio FlexEmbed-ratio--16by9"></div>
+                                                        <div class="FlexEmbed-content" data-image="momentImage">
+                                                            <div id="iframeContainer"></div>
+                                                            <iframe id="labelIframe" frameborder="0" style="width:100%;height:100%;"></iframe>
+                                                            <img id="labelImg" class="Moment-image" src="" alt="1967 | The Beatles | World's first live satellite broadcast of &quot;All You Need Is Love&quot; from Abbey Road" />
+                                                            <video id="video" src="" controls=""></video>
+                                                        </div>
+                                                        <!-- <div class="FlexEmbed-mask" data-image="momentImage"> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 右侧标签块开始 -->
+                    <div class="content-nav-right">
+                        <!-- 贴图 -->
+                        <div class="MapVideoContent">
+                            <div class="MapVideoContent-choose">
+                                <span>请输入贴图名称</span>
+                                <div class="MapName">
+                                    <input type="text" name="" placeholder="请输入名称" />
+                                </div>
+                                <span>请上传视频资源</span>
+                                <div class="Media-box">
+                                    <input type="text" name="" placeholder="上传视频文件" />
+                                    <a id="chooseVideoUpload" class="waves-effect fileuploadbtn waves-light btn">上传</a>
+                                </div>
+                                <form id="uploadFormVideo" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="uploadFileVideo" style="visibility:hidden;position:absolute;top:0px;width:0px" />
+                                    <!--隐藏默认标签样式-->
+                                </form>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>横向距离</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="px">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span>44</span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" data-index="px" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="px"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>纵向距离</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="py">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.001" min="-3"
+                                                max="3" value="0" data-index="py" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="py"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>面向距离</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="pz">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.001" min="-20"
+                                                max="20" value="0" data-index="pz" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="pz"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>横向放大</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="sx">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.001" min="0" max="3"
+                                                value="0" data-index="sx" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="sx"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>纵向放大</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="sy">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.001" min="0" max="3"
+                                                value="0" data-index="sy" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="sy"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title" style="display:none">
+                                <span>面向放大</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="sz">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.001" min="-3"
+                                                max="3" value="0" data-index="sz" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="sz"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>垂直面x旋转</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="ox">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.01" min="-6.28"
+                                                max="6.28" value="0" data-index="ox" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="ox"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>垂直面y旋转</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="oy">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.01" min="-6.28"
+                                                max="6.28" value="0" data-index="oy" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="oy"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="MapVideoContent-title">
+                                <span>平行面旋转</span>
+                                <div class="rangeControls">
+                                    <a class="waves-effect waves-light btn" style="background-color: red" data-key="reduce"
+                                        data-index="oz">
+                                        <i class="iconfont icon-jian"></i> </a>
+                                    <div class="rangeContent">
+                                        <!-- <div class="showVal"><span></span></div> -->
+                                        <p class="range-field"> <input type="range" id="test5" step="0.01" min="-6.28"
+                                                max="6.28" value="0" data-index="oz" /> </p>
+                                    </div>
+                                    <a class="waves-effect waves-light btn" style="background-color: rgb(0, 161, 255)"
+                                        data-key="add" data-index="oz"> <i class="iconfont icon-jia"></i> </a>
+                                </div>
+                            </div>
+                            <div class="btnGroup">
+                                <a class="waves-effect waves-light btn removeMapVideo">取消</a>
+                                <a class="waves-effect waves-light btn addMapVideo">确定</a>
+                            </div>
+                        </div>
+                        <div class="mattertagBoard">
+                            <div class="content-nav-border">
+                                <div class="right-container">
+                                    <!-- title -->
+                                    <div class="title">
+                                        <div class="title-head">
+                                            <span>标题</span>
+                                            <p class="chart-size">0个字符</p>
+                                        </div>
+                                        <div class="title-box">
+                                            <textarea style="resize:none;font-size: 14px;color: #A9A9A9;overflow: hidden;"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- detail -->
+                                    <div class="title detail">
+                                        <div class="title-testarea">
+                                            <div class="title-head">
+                                                <span>内容</span>
+                                                <p class="content-size">0个字符</p>
+                                            </div>
+                                            <div class="content-box">
+                                                <div class="link-Show">
+                                                    <a href="">百度&gt;</a>
+                                                </div>
+                                                <textarea style="resize:none; font-size:14px;color: #A9A9A9"
+                                                    placeholder="请输入内容"></textarea>
+                                                <div class="content-box-link">
+                                                    <i class="iconfont icon-lianjie"></i>
+                                                </div>
+                                                <div class="content-box-link-con">
+                                                    <header class="link-header">
+                                                        <span>添加链接</span>
+                                                        <i class="iconfont icon-quxiao"></i>
+                                                    </header>
+                                                    <div class="link-content">
+                                                        <div class="link-inset">
+                                                            <label>请输入链接名称 (可选)</label>
+                                                            <input type="text" name="link" />
+                                                        </div>
+                                                        <div class="link-url">
+                                                            <label>URL</label>
+                                                            <input type="text" name="link" />
+                                                        </div>
+                                                        <p class="link-note">网址格式无效</p>
+                                                        <div class="link-btn">
+                                                            <div class="link-confirm active">
+                                                                确定
+                                                            </div>
+                                                            <div class="link-cancle">
+                                                                取消
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Media -->
+                                    <div class="title Media active">
+                                        <div class="title-testarea">
+                                            <div class="title-head" style="padding-bottom:20px;">
+                                                <span>资源链接</span>
+                                            </div>
+                                            <div class="Media-box">
+                                                <!-- <textarea style="resize:none;font-size: 14px;color:rgb(169, 169, 169);" placeholder="请键入地址或选择上传"></textarea> -->
+                                                <input type="text" name="" placeholder="请键入地址或选择上传" />
+                                                <!-- <a class="waves-effect fileuploadbtn waves-light btn" id="btn">上传</a>  -->
+                                                <div class="fixed-action-btn horizontal active click-to-toggle">
+                                                    <a class="btn-floating btn-large blue caonimade">
+                                                        <!-- <i class="material-icons">menu</i> -->
+                                                        上传
+                                                    </a>
+                                                    <ul>
+                                                        <li title="上传图片"><a class="btn-floating red" style="transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px);opacity: 1;"><i
+                                                                    class="material-icons">perm_media</i></a></li>
+                                                        <li title="上传音频"><a class="btn-floating yellow darken-1" style="transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px);opacity: 1;"><i
+                                                                    class="material-icons">volume_up</i></a></li>
+                                                        <li title="上传视频"><a class="btn-floating green" style="transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px);opacity: 1;"><i
+                                                                    class="material-icons">video_library</i></a></li>
+                                                        <li title="上传gltf模型"><a class="btn-floating blue" style="transform: scaleX(1) scaleY(1) translateX(0px) translateY(0px);opacity: 1;"><i
+                                                                    class="material-icons">attach_file</i></a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="title-testarea">
+                                            <form id="uploadForm" method="post" enctype="multipart/form-data">
+                                                <input type="file" name="file" id="uploadFile" style="visibility:hidden;position:absolute;top:0px;width:0px"
+                                                    accept="" />
+                                                <!--隐藏默认标签样式-->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- color -->
+                            <div class="ColorBox">
+                                <div class="title color">
+                                    <div class="title-head">
+                                        <span>热点颜色</span>
+                                        <div class="color-radius">
+                                            <p style="background: #03687d" data-value="blue" class="active"></p>
+                                            <p style="background: #b40000" data-value="red"></p>
+                                            <p style="background: #d39a00" data-value="yellow"></p>
+                                            <p style="background: #9d00b0" data-value="Violet"></p>
+                                            <p style="background: #0fd000" data-value="green"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- steam Height -->
+                            <div class="ColorBox steam">
+                                <div class="title color">
+                                    <div class="title-head">
+                                        <span>调整距离</span>
+                                        <!-- <div class="steam-reset">Reset</div> -->
+                                        <a class="waves-effect waves-light btn steam-reset" style="padding: 0;width:52.09px;height:26.3px;background: #999691;text-align: center;line-height: 26px;">重置</a>
+                                    </div>
+                                    <div class="Progress">
+                                        <span style="padding-right: 4px;font-size: 12px;">0.25m</span>
+                                        <div class="wrap" style="position: relative">
+                                            <p class="range-field" style="width: 100%;">
+                                                <input type="range" class="heightAdjustment" value="0.25" min="0.2" max="2"
+                                                    step="0.1" />
+                                            </p>
+                                        </div>
+                                        <span style="padding-left: 4px;font-size: 12px;">1m</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 3d Showcase -->
+                            <div class="ShowCase">
+                                <div class="ShowCase-head">
+                                    <span>3D 显示控制</span>
+                                </div>
+                                <ul class="Blinds">
+                                    <li data-index="1">
+                                        <span>热点显示</span>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" name="sex" id="showRedian" class="chooseBtn">
+                                                <span class="lever active" for="showRedian"></span>
+                                            </label>
+                                        </div>
+                                        <!--             <span>热点显示</span>
+            <input type="checkbox" name="sex" id="" class="chooseBtn" /> <label for="" class="choose-label" :class="[biaoqian3DShow === true ? 'active active1' : '']"></label>  -->
+                                    </li>
+                                    <li data-index="2">
+                                        <span>线条显示</span>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" name="sex" id="showXianTiao" class="chooseBtn">
+                                                <span class="lever active" for="showXianTiao"></span>
+                                            </label>
+                                        </div>
+                                        <!--             <span>线条显示</span>
+            <input type="checkbox" name="sex" id="" class="chooseBtn" /> <label for="" class="choose-label" :class="[xiantiao3DShow === true ? 'active active1' : '']"></label>  -->
+                                    </li>
+                                </ul>
+                                <div class="btnGroup">
+                                    <a class="waves-effect waves-light btn addMattertag blue" style="width: 45%">确定</a>
+                                    <a class="waves-effect waves-light btn removeMattertag" style="width: 45%">删除</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 图片设置界面 -->
+                        <div class="imgEdit">
+                            <div class="imgEdit-ed">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input value="" id="first_name2" type="text" class="validate" v-model="imgEditName"
+                                            @input="valChange" style="border-bottom: 1px solid #ddd" />
+                                        <label class="active" for="first_name2">图片名称</label>
+                                    </div>
+                                </div>
+                                <div class="imgEdit-content">
+                                    <p>{{imgEditName}}</p>
+                                    <img src="" alt="" />
+                                    <a class="waves-effect waves-light btn blue" href="/uploads/5b337862380df.png"
+                                        download="" style="font-size:14px;">下载图片</a>
+                                </div>
+                                <div class="imgEdit-set">
+                                    <a class="waves-effect waves-light btn" style="font-size: 14px;"><i class="material-icons right"
+                                            style="color: green;display: none;">done</i><span>设置为起始图片</span></a>
+                                </div>
+                                <div class="imgEdit-set-morenzhi">
+                                    <a class="waves-effect waves-light btn blue"><i class="material-icons right" style="color: green;display: none;">done</i><span>设置为入户门默认值</span></a>
+                                </div>
+                                <!-- 底部确定与取消按钮 -->
+                                <div class="imgEdit-bottom">
+                                    <a class="waves-effect waves-light btn blue">确定</a>
+                                    <a class="waves-effect waves-light btn" style="">删除</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 标尺设置界面 -->
+
+                        <div class="Measurements">
+                            <div class="Measurements-header">
+                                <textarea style="" placeholder="请输入标尺的名称"></textarea>
+                            </div>
+                            <div class="Measurements-length" v-for="(item, index) in MeasurementsArr" :key="index">
+                                <p>{{item.name}}</p>
+                                <span>{{item.val}}</span>
+                            </div>
+                            <div class="Measurements-confirm">
+                                <a class="waves-effect waves-light btn blue" data-index="1">确定</a>
+                                <a class="waves-effect waves-light btn red" data-index="2">删除</a>
+                            </div>
+                        </div>
+
+                        <!-- 导航图上传界面 -->
+
+                        <div class="huxing-show" @click.stop="clickHuxing()">
+                            <div id="inset">
+                                <!-- <p>
+                                    面积 约510㎡
+                                </p> -->
+                                <div id="minimap">
+                                </div>
+                            </div>
+
+                            <div class="huxing-input" @click.stop="uploadHuxing">
+
+                                <form id="uploadApartmentFrom" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="uploadApartment" style="visibility:hidden;position:absolute;top:0px;width:0px"
+                                        accept="" />
+                                    <!--隐藏默认标签样式-->
+                                </form>
+
+                                <span>上传导航户型图</span>
+                                <button type="" @click.stop="deleHUxing">删除</button>
+
+                            </div>
+
+                            <ul class="huxing-list">
+                                <li v-for="(item, index) in huxingList" :key="index" :class="item.activeHUxing ? 'active' : ''">
+                                    <div class="huxing-name">
+                                        <span>{{item.name}}</span>
+                                        <input type="number" :step="item.coefficient" v-model="item.value" value="item.value"
+                                            @input="HuxingChange(item.name,item.value)" />
+                                    </div>
+                                    <div class="huxing-cup">
+                                        <p @click.stop="add(index, item.coefficient, item.name, item.value)">+</p>
+                                        <p @click.stop="cup(index, item.coefficient, item.name, item.value)">－</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="huxing-name"><span>预计面积</span> <input id="mianji" type="text" value="约0㎡"></div>
+                                </li>
+                            </ul>
+                            <div class="huxing-confirm">
+                                <button type="" @click.stop="huxingQueding">确定</button>
+                                <button type="" @click.stop="huxingQuxiao">删除</button>
+                            </div>
+                        </div>
+
+                        <!-- 2D户型图上传界面 -->
+                        <div class="ApartmentMap-show">
+                            <div id="inset">
+                                <img style="width: 100%;height: 100%;" id="insetImg" src="">
+                            </div>
+
+                            <div class="ApartmentMap-input" @click.stop="uploadHuxing">
+
+                                <form id="uploadApartmentFrom" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="uploadApartment" style="visibility:hidden;position:absolute;top:0px;width:0px"
+                                        accept="" />
+                                    <!--隐藏默认标签样式-->
+                                </form>
+
+                                <span>上传2D户型图</span>
+                                <button type="" @click.stop="deleApartmentMap">删除</button>
+
+                            </div>
+
+                            <ul class="ApartmentMap-list">
+                                <li v-for="(item, index) in ApartmentMapList" :key="index" :class="item.activeHUxing ? 'active' : ''">
+                                    <div class="huxing-name">
+                                        <span>{{item.name}}</span>
+                                        <input type="number" :step="item.coefficient" v-model="item.value" value="item.value"
+                                            @input="HuxingChange(item.name,item.value)" />
+                                    </div>
+                                    <div class="huxing-cup">
+                                        <p @click.stop="add(index, item.coefficient, item.name, item.value)">+</p>
+                                        <p @click.stop="cup(index, item.coefficient, item.name, item.value)">－</p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="ApartmentMap-confirm">
+                                <button type="" @click.stop="ApartmentMapQueding">确定</button>
+                                <button type="" @click.stop="ApartmentMapQuxiao">删除</button>
+                            </div>
+                        </div>
+
+                        <!-- 入户门设置界面 -->
+                        <div class="EntranceDoors-show">
+
+                            <div class="EntranceDoors-input" @click.stop="uploadHuxing">
+
+                                <form id="uploadApartmentFrom" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="uploadApartment" style="visibility:hidden;position:absolute;top:0px;width:0px"
+                                        accept="" />
+                                    <!--隐藏默认标签样式-->
+                                </form>
+                                <span>入户门设置</span>
+
+                            </div>
+
+                            <ul class="EntranceDoors-list">
+                                <li data-index="1" class="display">
+                                    <div class="huxing-name">
+                                        <span>入户门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;隐藏/显示</span>
+                                    </div>
+                                    <div class="switch">
+                                        <label><input type="checkbox" name="sex" id="showRedian" class="chooseBtn">
+                                            <span for="showRedian" class="lever active"></span></label>
+                                    </div>
+                                </li>
+
+                                <li v-for="(item, index) in EntranceDoorsList" :key="index" :class="item.activeHUxing ? 'active' : ''">
+                                    <div class="huxing-name">
+                                        <span>{{item.name}}</span>
+                                        <input type="number" :step="item.coefficient" v-model="item.value" value="item.value"
+                                            @input="HuxingChange(item.name,item.value)" />
+                                    </div>
+                                    <div class="huxing-cup">
+                                        <p @click.stop="add(index, item.coefficient, item.name, item.value)">+</p>
+                                        <p @click.stop="cup(index, item.coefficient, item.name, item.value)">－</p>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <div class="EntranceDoors-confirm">
+                                <button type="" @click.stop="EntranceDoorsQueding">确定</button>
+                                <button type="" @click.stop="EntranceDoorsQuxiao">删除</button>
+                            </div>
+                        </div>
+
+                        <!-- 标签设置界面 -->
+
+                        <div class="Label">
+                            <div class="Label-title">
+                                <span>请选择标签名字</span>
+                            </div>
+                            <div class="Label-content">
+                                <div>
+                                    <textarea style="resize:none;font-size: 14px;color: #A9A9A9;" maxlength="25">未命名</textarea>
+                                </div>
+                                <div class="Label-content-collection">
+                                    <ul>
+                                        <li class="active" data-value="未命名"> <span class="active">未命名</span> <i class="iconfont icon-zhengquedaan active"></i>
+                                        </li>
+                                        <li data-value="客厅"> <span>客厅</span> <i class="iconfont icon-zhengquedaan"></i>
+                                        </li>
+                                        <li data-value="厨房"> <span>厨房</span> <i class="iconfont icon-zhengquedaan"></i>
+                                        </li>
+                                        <li data-value="卧室"> <span>卧室</span> <i class="iconfont icon-zhengquedaan"></i>
+                                        </li>
+                                    </ul>
+                                    <div class="btnGroup">
+                                        <a class="waves-effect waves-light btn Labelconfirm">确定</a>
+                                        <a class="waves-effect waves-light btn Labeldelete">删除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 右侧标签块结束 -->
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="info"></div>
+        <div class="bodyMask"></div>
+        <div id="videos" style="display:none">
+            <video class='remoteVideo'></video>
+        </div>
+        <!--  -->
+        <canvas id='nullStream' style="display:none"></canvas>
+    </div>
+    <script src="./common/jquery-3.3.1.min.js"></script>
+    <!-- <script src='./js/qrcode.min.js'></script> -->
+    <script src="./common/modernizr.js"></script>
+    <script src="./common/signals.min.js"></script>
+    <script src="./common/three.min.js"></script>
+    <!-- <script src="../build/three.js"></script> -->
+    <script src="./js/slider.js"></script>
+    <!-- <script src="./js/filesave/FileSaver.js"></script> -->
+    <!-- measurements -->
+    <script src="js/renderers/CanvasRenderer.js"></script>
+    <script src="js/renderers/Projector.js"></script>
+    <!-- /measurements -->
+    <script src="./common/dat.gui.min.js"></script>
+    <script src="js/options.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/PointerLockControls.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/AnchorManager.js"></script>
+    <script src="js/MaterialSwitch.js"></script>
+    <script src="js/ModeSwitch.js"></script>
+    <script src="js/CameraController.js"></script>
+    <script src="js/TextureManager.js"></script>
+    <script src="js/VideoController.js"></script>
+    <script src="js/AnimateControl.js"></script>
+    <script src="js/Module3D.js"></script>
+    <script src="js/AnimateCommand/ScriptCommand.js"></script>
+    <script src="./js/addlabel.js"></script>
+    <script src="./js/howler.min.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="js/multithread.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/Sortable.js"></script>
+    <script>
+    </script>
+    <script>
+        // vue start
+        var vm = new Vue({
+            el: '#Vue',
+            data() {
+                return {
+                    list: [{
+                        title: '图文',
+                        value: 'pic',
+                        class: 'type-tageta'
+                    }, {
+                        title: '视频',
+                        value: 'video',
+                        class: 'type-tageta'
+                    }, {
+                        title: '模型',
+                        value: 'model',
+                        class: 'type-tageta'
+                    }, {
+                        title: '全景',
+                        value: 'panorama',
+                        class: 'type-tageta'
+                    }],
+                    MeasurementsArr: [{
+                            name: '标尺名称',
+                            val: '标尺 - 1'
+                        },
+                        {
+                            name: '长度',
+                            val: '3.73m'
+                        },
+                        {
+                            name: '测量时间',
+                            val: '2018/12/19  15:19'
+                        }
+                    ],
+                    // 检测是否存在描述 && 判断是否选中
+                    isDescription: 0,
+                    // 检测url中是否有值,
+                    UrlVal: '',
+                    // 上传与url二选一
+                    btnDisabled: false,
+                    isUpload: false,
+                    // 提示用户不能再输入url地址
+                    urlerror: false,
+                    // 用户不能再输入地址
+                    disabled: false,
+                    pageTitle: 'Light&Magic',
+                    pageMsg: '康云多维视觉智能科技有限公司成立于2017年6月22日，是一家以三维引擎为核心技术，拥有高门槛微米级别的三维智能建模扫描设备及多屏互动展示的开创性企业。',
+                    pageLocation: '科汇金谷',
+                    pageUrl: 'https://www.kangyun3d.com',
+                    // pageTitle:'',
+                    // pageMsg:'',
+                    // pageLocation:'',
+                    // pageUrl:'',
+                    // 控制开关的初始状态
+                    biaotiShow: true,
+                    yulanShow: true,
+                    moxingShow: true,
+                    tujiShow: false,
+                    biaoqian: true,
+                    backgroundMusic: false,
+                    biaoqian3DShow: true,
+                    xiantiao3DShow: true,
+                    imgEditName: 'my Image',
+                    yujimianji: '约0㎡',
+                    huxingList: [{
+                            name: 'Zoom',
+                            value: '0',
+                            activeHUxing: true,
+                            coefficient: 0.001
+                        },
+                        {
+                            name: 'RotationZ',
+                            value: '0',
+                            activeHUxing: true,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'PositionX',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'PositionY',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'PositionZ',
+                            value: '10',
+                            activeHUxing: true,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'NavRotation',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        }
+                    ],
+                    ApartmentMapList: [{
+                            name: 'MapHeight',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'MapWidth',
+                            value: '0',
+                            activeHUxing: true,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'MapRotate',
+                            value: '0',
+                            activeHUxing: true,
+                            coefficient: 0.01
+                        },
+                        {
+                            name: 'MapPositionX',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'MapPositionY',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'MapPositionZ',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        }
+                    ],
+                    EntranceDoorsList: [{
+                            name: 'DefaultPoint',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 1
+                        },
+                        {
+                            name: 'DoorRotate',
+                            value: '0',
+                            activeHUxing: true,
+                            coefficient: 0.01
+                        },
+                        {
+                            name: 'DoorPositionX',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'DoorPositionY',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        },
+                        {
+                            name: 'DoorPositionZ',
+                            value: '0',
+                            activeHUxing: false,
+                            coefficient: 0.1
+                        }
+                    ]
+                }
+            },
+            computed: {
+                isUploadChange() {
+                    return this.isUpload
+                }
+            },
+            watch: {
+                UrlVal(val) {
+                    if (val) {
+                        this.btnDisabled = true
+                    } else {
+                        this.btnDisabled = false
+                    }
+                },
+                isUploadChange(newVal) {
+                    if (newVal) {
+                        this.urlerror = true
+                        this.disabled = true
+                    } else {
+                        this.urlerror = false
+                        this.disabled = false
+                    }
+                }
+            },
+            mounted() {},
+            created() {},
+            methods: {
+                EntranceDoorsQuxiao() {
+                    popEditHid();
+                    translateNavEnd();
+                },
+                EntranceDoorsQueding() {
+                    // save data
+                    modelData.DefaultPoint = 0;
+                    modelData.DefaultPointDoor = [{
+                        "Display": DoorDisplay || true,
+                        "DefaultPointDoorNum": this.$data.EntranceDoorsList[0].value,
+                        "x": this.$data.EntranceDoorsList[2].value,
+                        "y": this.$data.EntranceDoorsList[3].value,
+                        "z": this.$data.EntranceDoorsList[4].value,
+                        "r": this.$data.EntranceDoorsList[1].value
+                    }]
+                    console.log('DefaultPointDoor', modelData.DefaultPointDoor);
+                    console.log('DefaultPoint', modelData.DefaultPoint);
+                    sendAjax();
+                    popEditHid();
+                    translateNavEnd();
+                },
+                ApartmentMapQuxiao() {
+                    translateNavEnd();
+                    popEditHid();
+                },
+                ApartmentMapQueding() {
+                    // save data
+                    modelData.ApartmentMap = [{
+                        "height": this.$data.ApartmentMapList[0].value,
+                        "width": this.$data.ApartmentMapList[1].value,
+                        "rotate": this.$data.ApartmentMapList[2].value,
+                        "P_x": this.$data.ApartmentMapList[3].value,
+                        "P_y": this.$data.ApartmentMapList[4].value,
+                        "P_z": this.$data.ApartmentMapList[5].value
+                    }]
+                    console.log('ApartmentMap', modelData.ApartmentMap)
+                    sendAjax();
+                    translateNavEnd();
+                    popEditHid();
+                },
+                closeIframe() {
+                    window.parent.postMessage('closeIframe', '*');
+                },
+                HuxingChange(name, val) {
+                    MiniMapContrl(name, val);
+                },
+                // for
+                forE(name, value) {
+                    this.$data.huxingList.forEach((item, index) => {
+                        if (item.name == name) {
+                            item.value = value;
+                        }
+                    })
+                },
+                // for2D
+                forE_2D(name, value) {
+                    this.$data.ApartmentMapList.forEach((item, index) => {
+                        if (item.name == name) {
+                            item.value = value;
+                        }
+                        console.log("name", name);
+                    })
+                },
+                // forDoor
+                forE_Door(name, value) {
+                    this.$data.EntranceDoorsList.forEach((item, index) => {
+                        if (item.name == name) {
+                            item.value = value;
+                        }
+                        console.log("name", name);
+                    })
+                },
+                // 封装增减与减少函数
+                zengjiaFun(index, coefficient, name, val) {
+                    let res = this.reservedDecimal(val, 3);
+                    this.$data.huxingList[index].value = (parseFloat(res) + coefficient).toFixed(3);
+
+                    MiniMapContrl(name, val);
+
+                },
+                jianshaoFun(index, coefficient, name, val) {
+                    let res = this.reservedDecimal(val, 3);
+                    this.$data.huxingList[index].value = (parseFloat(res) - coefficient).toFixed(3);
+
+                    MiniMapContrl(name, val);
+
+                },
+                clickHuxing(event) {},
+                // 保留小数点
+                reservedDecimal(val, digit) {
+                    return Number(val).toFixed(digit);
+                },
+                add(index, coefficient, name, val) {
+                    this.zengjiaFun(index, coefficient, name, val);
+                },
+                cup(index, coefficient, name, val) {
+                    this.jianshaoFun(index, coefficient, name, val);
+                },
+                huxingQuxiao() {
+                    popEditHid();
+                    translateNavEnd();
+                },
+                huxingQueding() {
+                    modelData.DefaultMiniMap = [{
+                        "zoom": this.$data.huxingList[0].value,
+                        "R_z": this.$data.huxingList[1].value,
+                        "P_x": this.$data.huxingList[2].value,
+                        "P_y": this.$data.huxingList[3].value,
+                        "P_z": this.$data.huxingList[4].value,
+                        "Nav_r": this.$data.huxingList[5].value,
+                        "Acreage": this.$data.yujimianji
+                    }];
+                    console.log('DefaultMiniMap', modelData.DefaultMiniMap);
+                    sendAjax();
+                    popEditHid();
+                    translateNavEnd();
+                },
+                deleHUxing() {
+                    $('.huxing-input>img').hide();
+                    // 删除操作开始
+                },
+                deleApartmentMap() {
+                    $('.ApartmentMap-input>img').hide();
+                    // 删除操作开始
+                },
+                uploadHuxing() {
+                    uploadSendPanduan = 'img'
+                    uploadVue = true
+                    $('#uploadApartment').attr('accept', 'image/png');
+                    $('#uploadApartment').removeAttr('multiple');
+                    $('#uploadApartment').click();
+                },
+                valChange() {
+                    $('.imgEdit-content>p').html(this.imgEditName)
+                },
+                pop: function (index) {
+                    this.isDescription = index
+                },
+                urlBlur() {
+                    // if (this.UrlVal) {
+                    //     this.btnDisabled = true
+                    // } else {
+                    //     this.btnDisabled = false
+                    // }
+                },
+                // 重置内容
+                resetUpload() {
+                    $('#textarea1').val('');
+                    $('#textarea12').val('');
+                    $('#uploadForm')[0] = '';
+                    this.isUpload = false;
+                    uploadSoure = ''
+                },
+                // 删除标签
+                removeMattertag() {}
+
+
+            },
+            components: {
+                // nav1
+            }
+        })
+
+
+
+
+        var phpedit_url = "https://todo.kangyun3d.cn/index.php/index2/";
+        var phpimg_url = "https://todo.kangyun3d.cn/";
+        var Token = '';
+        var PName = ''
+        if (getUrlQuery()) {
+            Token = getUrlQuery().urlObj['_'];
+            PName = getUrlQuery().urlObj['p'];
+        }
+        // if (true) {
+        //     phpedit_url = "//localhost/spacephp/public/index.php/";
+        //     phpimg_url = "//localhost/spacephp/public/";
+        // }
+        var uploadSoure = ''; //上传的文件url地址
+
+        var isAddMatterTag = false;
+        var isAddLabel = false;
+
+
+        // 检测当前是哪个标签在进行输入
+        var OnMatterTag = ''
+
+        // get url request fun start +
+
+        function getUrlQuery() {
+            "use strict";
+            var urlStr = location.search.substr(1) ? location.search.substr(1) : "";
+            var urlArr = [];
+            for (var i = 0; i < urlStr.split("&").length; i++) {
+                urlArr.push(urlStr.split("&")[i].split("=")[0] ? urlStr.split("&")[i].split("=")[0] : "");
+                urlArr.push(urlStr.split("&")[i].split("=")[1] ? urlStr.split("&")[i].split("=")[1] : "onlyKey")
+            }
+            if (urlStr == "") {
+                return;
+            } else {
+                let urlObj = {};
+                for (var i = 0; i < urlArr.length; i += 2) {
+                    if (urlArr[i] != "") {
+                        urlObj[urlArr[i]] = decodeURIComponent(urlArr[i + 1]);
+                    }
+                }
+                return {
+                    urlArr,
+                    urlObj
+                };
+            }
+        }
+
+        // get url request fun end -
+
+
+        function changeSvgColor() {
+            // 9月6号加入的代码开始
+            // 改变SVG颜色
+            $('#next>.hasHover>svg').mouseover(function () {
+                // $(this).attr('fill', '#4bcdfc !important');
+                $(this).find('g[id="Group-1097"]').attr('fill', '#4bcdfc');
+                // console.log($(this))
+            })
+            $('#next>.hasHover>svg').mouseleave(function () {
+                // $(this).attr('fill', '#4bcdfc !important');
+                $(this).find('g[id="Group-1097"]').attr('fill', '#fff');
+                // console.log($(this))
+            })
+            $('#previous>.hasHover>svg').mouseover(function () {
+                // $(this).attr('fill', '#4bcdfc !important');
+                $(this).find('path').attr('fill', '#4bcdfc');
+                // console.log($(this))
+            })
+            $('#previous>.hasHover>svg').mouseleave(function () {
+                // $(this).attr('fill', '#4bcdfc !important');
+                $(this).find('path').attr('fill', '#fff');
+                // console.log($(this))
+            })
+            // 9月6号加入的代码结束
+        }
+
+
+
+
+        /***
+         * 发布
+         */
+        $('.sendbtna').click(function () {
+
+            if (!arrModel) {
+                // 不做处理
+            } else {
+                // 显示用户选择的图片
+                for (let i = 0; i < arrModel.length; i++) {
+                    arrModel[i].show = false
+                    for (let g = 0; g < array.length; g++) {
+                        if (array[g] == arrModel[i].src) {
+                            arrModel[i].show = true
+                        }
+                    }
+                }
+
+                modelData.slider = arrModel;
+            }
+
+            const p = new Promise((resolve, reject) => {
+                $.post(phpedit_url + "edit/sendpub", {
+                    path: getQueryString('p'),
+                    id: getQueryString('itemid'),
+                    '_': Token
+                }, function (data, status) {
+                    resolve();
+                    window.parent.postMessage('sendsuc', '*');
+                });
+            }).then(() => {
+                sendAjaxAnimatePublic();
+            }).catch((error) => {
+                console.log(error)
+            })
+
+        });
+
+        // 渲染热点
+        function rendMatterTag() {}
+
+
+        var oUl = document.querySelector('.swiper_ul');
+        oUl.addEventListener('click', function (ev) {
+            var target = ev.target;
+            while (target !== oUl) {
+                if (target.tagName.toLowerCase() == 'li') {
+
+                    // let orient = JSON.parse($(target).attr('animateclick'));
+
+                    // currentSlideIndex = $(target).attr('toIndex');
+                    $(target).addClass('swiperCurrentLi').siblings().removeClass('swiperCurrentLi');
+                    // goCurrentViewPoint(currentSlideIndex, orient);
+                    // setWalkingViewPoint(currentSlideIndex, new THREE.Quaternion(orient[0], orient[1], orient[2], orient[3]));
+                    // animateControl.stop('main');
+                    // $('#pause').css('display', 'none');
+                    // $('#play').css('display', 'block');
+                    break;
+                }
+                target = target.parentNode;
+            }
+        })
+        // 渲染到视图的截图列表
+
+        function rendSlider() {
+            if (!modelData.slider) return;
+            var newLi = '';
+            for (var i = 0; i < modelData.slider.length; i++) {
+                var json = modelData.slider[i];
+                $('.snapshotList').append(`
+              <li index="` + i +
+                    `" class='snapshotListLi' style='position:relative' >
+                <p>` + json.timer +
+                    `</p>
+                <img src="` + json.src +
+                    `" alt="" class="responsive-img">
+              </li>`);
+                newLi += "<li toIndex=" + modelData.slider[i].index + " animateclick=" + modelData.slider[i].animateclick +
+                    "><img src='" + modelData.slider[i].src + "'></li>";
+                $('.swiper_ul').css('width', 148 * modelData.slider.length + 'px')
+
+                // <span class='deleteListLi'  style='position:absolute;right:5px;top:0;font-size:20px;display:none'>x</span>
+            }
+            $('.swiper_ul').html(newLi);
+
+
+            // 点击图片进行更改
+            $('.snapshotList>li>img').click(function (e) {
+                $('.imgEdit-content>img').attr('src', e.target.getAttribute('src'));
+                $('.imgEdit-content>p').html($(this).prev().text());
+                // 设置图片下载地址
+                var downloadApi = e.target.getAttribute('src').substr(e.target.getAttribute('src').indexOf(
+                    'uploads'));
+                    console.log(downloadApi)
+                $('.imgEdit-content>a').attr('href', '/' + downloadApi)
+                //
+                $('.imgEdit-ed>.row>.input-field>input').val($(this).prev().text());
+                // 弹出操作界面
+                popEdit('imgEdit');
+                translateNav();
+                $(".nav-icon-right-list").addClass('active');
+                $(".icon-left-show>div").removeClass('active');
+
+                // 检测当前的图片是否是起始图片
+                let src = $('.imgEdit-content>img').attr('src');
+                if ($('.snapshotList>li:first-child>img').attr('src') === src) {1
+                    $('.imgEdit-set>a').css('background', '#ccc');
+                    $('.imgEdit-set>a>i').css('display', 'block');
+                    $('.imgEdit-set>a>i').css('color', 'green');
+                    $('.imgEdit-set>a>span').html('已设置为起始图片');
+                } else {
+                    $('.imgEdit-set>a').css('background', 'rgba(0, 161, 255,1)');
+                    $('.imgEdit-set>a>i').css('display', 'none');
+                    $('.imgEdit-set>a>i').css('color', 'green');
+                    $('.imgEdit-set>a>span').html('设置为起始图片');
+                }
+            });
+
+
+            // 图片编辑确定按钮
+            $('.imgEdit-bottom>a:first-child').click(function (e) {
+
+                let name = $('.imgEdit #first_name2').val()
+                let src = $('.imgEdit-content>img').attr('src');
+                let arr = $('.snapshotList>li>img');
+                for (let z = 0; z < arr.length; z++) {
+                    let ArrSrc = arr[z]
+                    if ($(ArrSrc).attr('src') === src) {
+                        $(arr[z]).prev().html(name)
+                    }
+                }
+                for (let i = 0; i < modelData.slider.length; i++) {
+                    if (modelData.slider[i].src == src) {
+                        modelData.slider[i].timer = name
+                        sendAjax();
+                        popEditHid();
+                        translateNavEnd();
+                        $(".nav-icon-right-list").removeClass('active');
+                    }
+                }
+                // window.parent.postMessage('savesuccess', '*');
+
+            })
+
+
+
+            // 键盘事件
+            $('.imgEdit #first_name2').keydown(function (e) {
+                if (e.keyCode == "13") {
+                    let name = $('.imgEdit #first_name2').val()
+                    let src = $('.imgEdit-content>img').attr('src');
+                    let arr = $('.snapshotList>li>img');
+                    for (let z = 0; z < arr.length; z++) {
+                        let ArrSrc = arr[z]
+                        if ($(ArrSrc).attr('src') === src) {
+                            $(arr[z]).prev().html(name)
+                        }
+                    }
+                    for (let i = 0; i < modelData.slider.length; i++) {
+                        if (modelData.slider[i].src == src) {
+                            modelData.slider[i].timer = name
+                            sendAjax();
+                            popEditHid();
+                            translateNavEnd();
+                            $(".nav-icon-right-list").removeClass('active');
+                        }
+                    }
+                    // window.parent.postMessage('savesuccess', '*');
+                }
+            })
+
+            // 删除按钮
+            $('.imgEdit-bottom>a:last-child').click(function (e) {
+                let src = $('.imgEdit-content>img').attr('src');
+                $('.snapshotList>li>img[src="' + src + '"]').parents('.snapshotListLi').remove();
+                $('.swiper_ul>li>img[src="' + src + '"]').parents('li').remove();
+
+
+                // 删除动画数据   (新版本取消使用动画函数)
+                // const promistanimateJson = new Promise((resolve, reject) => {
+                //     let animateArr = animateControl.data.main.frames;
+                //     for (let i = 0; i < animateArr.length; i++) {
+                //         if (animateArr[i].src === src) {
+                //             animateArr.splice(i, 1);
+                //             resolve();
+                //         }
+                //     }
+
+                //     console.log(animateControl)
+                // });
+
+                // 删除modelData.json中的数据
+                let arr = modelData.slider;
+                const promistModelDataJson = new Promise((resolve, reject) => {
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].src === src) {
+                            arr.splice(i, 1);
+                            resolve();
+                        }
+                    }
+                    console.log(modelData.slider)
+                });
+
+
+                promistModelDataJson
+                    .then(() => {
+
+                        sendAjax();
+                        popEditHid();
+                        translateNavEnd();
+                        $(".nav-icon-right-list").removeClass('active');
+                        // // 动画数组重新排序  (新版本取消使用动画函数)
+                        // let index = 0;
+                        // let paixuArr = animateControl.data.main.frames;
+                        // if (paixuArr.length == 0) {
+                        //     // 动画数组已经是空了
+                        //     // 发送ajax
+                        //     sendAjax();
+                        //     sendAjaxAnimate();
+                        //     window.parent.postMessage('deleteImage', '*');
+                        //     $('.content-nav-right').css({
+                        //         'transform': 'translateX(255px)'
+                        //     })
+                        // } else {
+                        //     for (let i = 0; i < paixuArr.length; i++) {
+                        //         paixuArr[i].start = index;
+                        //         index += 3
+                        //         if (i === paixuArr.length - 1) {
+                        //             // 发送ajax
+                        //             sendAjax();
+                        //             sendAjaxAnimate();
+                        //             window.parent.postMessage('deleteImage', '*');
+                        //             popEditHid();
+                        //             translateNavEnd();
+                        //             $(".nav-icon-right-list").removeClass('active');
+                        //         }
+                        //     }
+                        // }
+
+                    })
+                    .catch((error) => console.log(error))
+            })
+
+
+
+            $('.deleteListLi').click(function (ev) {
+                // $(ev.currentTarget).parents('.snapshotListLi').remove();
+
+                // // 获取当前删除的图片地址
+                // let src = ev.target.previousElementSibling.getAttribute('src');
+
+                // let arr = $('.swiper_ul>li>img');
+                // for (let z = 0; z < arr.length; z++) {
+                //     if (arr[z].getAttribute('src') == src) {
+                //         // 删除当前子项
+                //         $('.swiper_ul>li')[z].remove();
+                //     }
+                // }
+
+
+
+                // for (var i = 0; i < modelData.slider.length; i++) {
+                //      var json = modelData.slider[i];
+                //      if(json.src==$(ev.currentTarget).parents('.snapshotListLi').find('img').attr('src')){
+                //          modelData.slider.splice(i,1)
+                //          sendAjax();
+                //      }
+                // }
+
+                // // // 删除动画组中的数据
+                // // let animateArray = animateControl.data.main.frames;
+                // // for (let a = 0; a < animateArray.length; a++) {
+                // //   if (animateArray[a].src === src) {
+                // //     animateArray.splice(a,1);
+                // //     sendAjaxAnimate();
+                // //   }
+                // // }
+
+                // // 动画组重新排序
+                // let startEr = 0;
+                // // 改变animate.json数据
+                // let animateArray = animateControl.data.main.frames;
+                // const promist = new Promise(function(resolve,reject){
+                //   // 删除动画组中的数据
+                //   for (let a = 0; a < animateArray.length; a++) {
+                //     if (animateArray[a].src === src) {
+                //       animateArray.splice(a,1);
+                //       resolve();
+                //     }
+                //   }
+                // }).then(function() {
+                //   for (let z = 0; z < animateArray.length; z++) {
+                //     animateArray[z].start = startEr;
+                //     startEr += 3;
+                //     if (z === animateArray.length -1 ) {
+                //       sendAjaxAnimate();
+                //     }
+                //   }
+                // })
+
+            })
+
+
+            // 设置起始位置
+            $('.imgEdit-set>a').click(function () {
+
+                let src = $('.imgEdit-content>img').attr('src');
+                if ($('.snapshotList>li:first-child>img').attr('src') === src) {
+                    $('.imgEdit-set>a').css('background', '#ccc');
+                    $('.imgEdit-set>a>i').css('display', 'block');
+                    $('.imgEdit-set>a>i').css('color', 'green');
+                    window.parent.postMessage('setInitialagain', '*');
+                    return false;
+                }
+
+                // 动画组重新排序
+                let startEr = 0;
+                let arr = animateControl.data.main.frames;
+                let modelArr = modelData.slider;
+
+
+                // 改变modelData数据
+                const promistModelData = new Promise((resolve, reject) => {
+                    for (let i = 0; i < modelArr.length; i++) {
+                        if (modelArr[i].src === src) {
+                            let need = modelArr[i]
+                            modelArr.splice(i, 1);
+                            modelArr.unshift(need);
+                            return resolve();
+                        }
+                    }
+                }).then(() => {
+                    sendAjax();
+                }).catch(() => {
+                    console.log(err);
+                })
+
+                // 改变animate.json数据
+                const promist = new Promise((resolve, reject) => {
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].src === src) {
+                            let need = arr[i];
+                            // 删除
+                            arr.splice(i, 1);
+                            arr.unshift(need);
+                            return resolve();
+                        }
+                    }
+                }).then(function () {
+                    for (let z = 0; z < arr.length; z++) {
+                        arr[z].start = startEr;
+                        startEr += 3;
+                        if (z === arr.length - 1) {
+                            sendAjaxAnimate();
+                        }
+                    }
+                })
+
+                // 设置图片为初始位置
+                $('.swiper_ul>li').each(function (index) {
+                    if ($(this).children('img').attr('src') === src) {
+                        let one = $('.swiper_ul>li')[index];
+                        $('.swiper_ul>li')[index].remove()
+                        $('.swiper_ul>li').first().before($(one).clone(true));
+                    }
+                })
+
+                // 设置图片为初始位置
+                $('.snapshotList>li').each(function (index) {
+                    if ($(this).children('img').attr('src') === src) {
+                        let one = $('.snapshotList>li')[index];
+                        $('.snapshotList>li')[index].remove()
+                        $('.snapshotList>li').first().before($(one).clone(true));
+                    }
+                })
+
+                window.parent.postMessage('setInitial', '*');
+
+            })
+
+            oUl.addEventListener('click', function (ev) {
+
+                var target = ev.target;
+                while (target !== oUl) {
+                    if (target.tagName.toLowerCase() == 'li') {
+                        $(target).addClass('swiperCurrentLi').siblings().removeClass('swiperCurrentLi');
+                        break;
+                    }
+                    target = target.parentNode;
+                }
+            })
+        }
+
+
+        function onInit() {
+            slider();
+            rendSlider();
+            operateMatter();
+            changeSvgColor();
+            rendMatterTag();
+            initDefaultPointDoor();
+
+            // set preview.png
+            // $('.shadowLoading').css('background-image', 'url('+ pimagePath +')');
+
+            $('#leftspanname').html(getQueryString('tn'));
+            $('title').html(getQueryString('tn'));
+
+
+            // loading end
+
+
+            setTimeout(function () {
+                if (modelData.slider.length == 0) {
+                    if (JSON.stringify(animateControl.data) == '{}') {
+                        // 空对象，补充所需要的字段
+                        animateControl.data = {
+                            "main": {
+                                "frames": []
+                            },
+                            "video": {
+                                "frames": []
+                            }
+                        }
+                        sendAjaxAnimate();
+                    } else {
+                        animateControl.data.main.frames.length = 0;
+                        console.log(animateControl);
+                        sendAjaxAnimate();
+                    }
+                }
+                TouchTheWall();
+                initTag();
+                initMeasure();
+                initLabel();
+                oninitGuide();
+
+            }, 2000)
+
+
+
+            // 防止本地错误
+            try {
+
+                // 进行补充说明开始
+                let userid = JSON.parse(localStorage.getItem('userInfo')).id;
+                let token = JSON.parse(localStorage.getItem('userInfo')).token;
+                let id = localStorage.getItem('editurl');
+                let key = id.indexOf('itemid=');
+                let strArr = id.substring(key);
+                let key1 = strArr.indexOf('&');
+                let strArr1 = strArr.substring(0, key1);
+                let Itemid = strArr1.substring(7);
+
+                $.ajax({
+                    type: 'post',
+                    url: phpedit_url + "items/space_detil",
+                    data: {
+                        id: Itemid,
+                        userid: userid,
+                        '_': token
+                    },
+                    success: function (data) {
+
+                        let json = data;
+                        // 提出者
+                        $('.scanTitle-title>span>a').text(json.data['detail_presenter'])
+                        // 标题
+                        $('.scanTitle-title>p').text(json.data['title']);
+                        // 内容
+                        $('#pageMsg').text(json.data['description']);
+                        // 项目标题
+                        $('.header-Title>p').text(json.data['title']);
+                        // 定位
+                        if (json.data.location == null) {
+                            $('.location').hide(200);
+                        } else {
+                            $('#pageLocation').text(json.data.location);
+                        }
+                        // 用户名
+                        if (json.data['detail_username'] == null) {
+                            $('.peopleMsg-phone>p').hide(200);
+                        } else {
+
+                            $('.peopleMsg-phone>p').text(json.data['detail_username']);
+                        }
+                        // phone
+                        if (json.data['detail_phone'] == null) {
+                            $('.peopleMsg-phone>span').hide(200);
+                        } else {
+                            $('.peopleMsg-phone>span').text(json.data['detail_phone']);
+                        }
+                        // email
+                        if (json.data['detail_email'] == null) {
+                            $('.peopleMsg-phone>a').hide(200);
+                        } else {
+                            $('.peopleMsg-phone>a').text(json.data['detail_email']);
+                        }
+
+                        // 总体
+                        if (json.data['detail_email'] == null && json.data['detail_username'] == null &&
+                            json.data[
+                                'detail_phone'] == null) {
+                            $('.peopleMsg').hide(200);
+                        }
+                        // url
+                        // $('#pageUrl').text('https://space.kangyun3d.cn/' + json.data.url);
+                    },
+                    error: function (error) {
+                        $('#pageTitle').text('kangyunkeji');
+                        $('.header-Title>p').text('康云科技');
+                        $('.location').text('kangyunkeji');
+                        $('#pageUrl').text('kangyunkeji');
+                    }
+                });
+                // 进行补充说明结束
+            } catch (err) {
+                // console.log(err + ' ' + '本地错误可以忽略')
+            }
+
+        }
+
+        function onModelLoaded() {
+            document.oncontextmenu = function (e) {
+                e.preventDefault();
+            };
+            document.querySelector("canvas").onmousedown = function (e) {
+                // if (bgpink) return;
+                if (e.button == 2) {
+
+                    $('#movematter').remove()
+                    $('#movelabel').remove()
+                    isAddMatterTag = false
+                    isAddLabel = false
+                }
+            }
+            var cam = cameraController.getCurrentCamera();
+            var pos = new THREE.Vector3();
+            var q = new THREE.Quaternion();
+            cam.getWorldPosition(pos);
+            cam.getWorldQuaternion(q);
+            setTimeout(function () {
+                var text = JSON.stringify({
+                    index: targetIndex,
+                    camera: {
+                        pos: [parseInt(pos.x * 100) / 100, parseInt(pos.y * 100) / 100, parseInt(pos.z *
+                            100) / 100],
+                        q: [parseInt(q.x * 100000) / 100000, parseInt(q.y * 100000) / 100000, parseInt(
+                                q.z * 100000) /
+                            100000, parseInt(q.w * 100000) / 100000
+                        ],
+                        qd: [q.x, q.y, q.z, q.w]
+                    }
+                });
+                cameraInfo = {
+                    posx: parseInt(pos.x * 100) / 100,
+                    posy: parseInt(pos.y * 100) / 100,
+                    posz: parseInt(pos.z * 100) / 100,
+                    qdx: q.x,
+                    qdy: q.y,
+                    qdz: q.z,
+                    qdw: q.w
+                }
+
+            }, 1000)
+            setTimeout(() => {
+                // 设置入户门的默认值
+                // modelData.DefaultPoint = 0;
+                // modelData.DefaultPointDoor = [{
+                //     "DefaultPointDoorNum": 0,
+                //     "x": 0,
+                //     "y": 0,
+                //     "z": 0,
+                //     "r": 0
+                // }]
+                $('#insetImg').attr('src', rootPath + 'Map_B.png');
+
+                $('.shadowLoading').animate({
+                    opacity: 0,
+                }, 1500, function () {
+                    $('.shadowLoading').css('display', 'none');
+                    setWalkingViewPoint(0);
+                });
+            }, 1000)
+
+
+        }
+
+
+
+        function onMouseMove(e) {
+
+
+            if (isAddMatterTag) {
+                $('#movematter').css({
+                    'position': 'fixed',
+                    "left": e.pageX + 'px',
+                    "top": e.pageY + 'px',
+                    'width': '40px',
+                    'height': '60px',
+                    'z-index': '0',
+                    'pointer-events': ' none'
+                })
+            }
+            if (isAddLabel) {
+                $('#movelabel').css({
+                    'position': 'fixed',
+                    "left": e.pageX + 'px',
+                    "top": e.pageY + 'px',
+                    'width': '40px',
+                    'height': '60px',
+                    'z-index': '0',
+                    'pointer-events': ' none'
+                })
+            }
+        }
+
+
+        function onWindowResize() {
+
+            module3D.setSize(window.innerWidth - 279, window.innerHeight - 90);
+        }
+
+
+
+        function onAnimate() {
+
+            // var pos = getWindowPos(-10, 1, -18);
+
+            $(".mapContainer[origin=true]").find('.movingSpan').get(0).style.transform = 'rotate(' + -(modelData.rotation +
+                getViewDirection() * 180 / Math.PI) + 'deg)';
+            $(".mapContainer[origin=true]").find('.movingSpan').get(0).style.transformOrigin = 'center bottom';
+            if ($(".mapContainer[origin=false]").length) {
+                $(".mapContainer[origin=false]").find('.movingSpan').get(0).style.transform = 'rotate(' + -(modelData.rotation +
+                    getViewDirection() * 180 / Math.PI) + 'deg)';
+                $(".mapContainer[origin=false]").find('.movingSpan').get(0).style.transformOrigin = 'center bottom';
+            }
+
+        }
+
+        function onWalkingViewPoint(index, orient) {
+            $(".mapContainer[origin=true]").find('.movingSpan').animate({
+                'right': -(modelData.viewPoints[index].x) * 4.49 - 4 + 'px',
+                'bottom': -(modelData.viewPoints[index].z) * 4.7 + 6 + 'px'
+
+            }, 1500);
+
+            $(".mapContainer[origin=false]").find('.movingSpan').animate({
+                'right': -(modelData.viewPoints[index].x * ($(".mapContainer[origin=false] .mapImg").width() /
+                        88)) * 4.49 -
+                    4 * ($(".mapContainer[origin=false] .mapImg").width() / 88) + 'px',
+                'bottom': -(modelData.viewPoints[index].z * ($(".mapContainer[origin=false] .mapImg").height() /
+                        168)) *
+                    4.7 + 6 * ($(".mapContainer[origin=false] .mapImg").height() / 168) + 'px'
+
+            }, 1500);
+
+            $(".mapContainer[origin=false]").find('.movingSpan').animate({
+                'right': (-(modelData.viewPoints[index].x) * 4.49 + 6) * $(".mapContainer[origin=false]").find(
+                        'img').width() /
+                    $(".mapContainer[origin=true]").find('img').width() + 'px',
+                'bottom': (-(modelData.viewPoints[index].z) * 4.7 + 4) * $(".mapContainer[origin=false]").find(
+                        'img').height() /
+                    $(".mapContainer[origin=true]").find('img').height() + 'px'
+
+            }, 1500);
+        }
+
+
+
+
+        var infoDiv = document.getElementById("info");
+
+        function showInfo(msg) {
+            infoDiv.innerHTML = msg;
+        }
+
+        $("body").on("touchmove", function (event) {
+            event.preventDefault;
+        }, false)
+
+
+        $("body").off("touchmove")
+
+        /**
+         * 操作发送到编辑版的
+         */
+        function sendAjax() {
+            $.post(phpedit_url + 'edit/edit_json', {
+                'json': JSON.stringify(modelData),
+                'path': getQueryString('p'),
+                '_': Token
+            }, function (result) {
+
+            });
+        }
+        // 动画操作发送编辑版的
+
+        function sendAjaxAnimate() {
+            $.post(phpedit_url + 'edit/json_file', {
+                'json': JSON.stringify(animateControl.data),
+                'path': getQueryString('p'),
+                '_': Token
+            }, function (result) {});
+        }
+        // 动画操作发送到发布版的
+
+        function sendAjaxAnimatePublic() {
+            console.log(animateControl.data);
+            console.log(modelData.slider);
+            console.log(modelData)
+            $.post(phpedit_url + 'edit/json_file_publish', {
+                'json': JSON.stringify(animateControl.data),
+                'path': getQueryString('p'),
+                '_': Token
+            }, function (result) {});
+        }
+
+
+        var uploadSendPanduan = ''
+        var uploadVue = 'false'
+        $(function () {
+
+            $('.Media-box ul>li').click(function (e) {
+                if ($(this).index() == 0) {
+                    // img  accept="audio/*"
+                    uploadSendPanduan = 'img'
+                    $('#uploadFile').attr('accept', 'image/*');
+                    $('#uploadFile').removeAttr('multiple');
+                    $('#uploadFile').click();
+                } else if ($(this).index() == 1) {
+                    // audio
+                    uploadSendPanduan = 'audio'
+                    $('#uploadFile').attr('accept', 'audio/*');
+                    $('#uploadFile').removeAttr('multiple');
+                    $('#uploadFile').click();
+                } else if ($(this).index() == 2) {
+                    // video
+                    uploadSendPanduan = 'video'
+                    $('#uploadFile').attr('accept', 'video/*');
+                    $('#uploadFile').removeAttr('multiple');
+                    $('#uploadFile').click();
+                } else if ($(this).index() == 3) {
+                    // gltf
+                    uploadSendPanduan = 'gltf'
+                    $('#uploadFile').attr('multiple', 'multiple');
+                    $('#uploadFile').removeAttr('accept');
+                    $('#uploadFile').click();
+                }
+            })
+
+            $('#btn').click(function () {
+                $('#uploadFile').click();
+            });
+
+            $('#chooseVideoUpload').click(function () {
+                $('#uploadFileVideo').click();
+            });
+
+            $('#chooseBgMusicUpload').click(function () {
+                $('#uploadFileBgmusic').click();
+            });
+
+
+
+            $('#uploadFileBgmusic').change(function () {
+                window.parent.postMessage('uploading', '*');
+                var formData = new FormData($('#uploadFormBgmusic')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: phpedit_url + "upload/edit_file",
+                    headers: {
+                        'token': Token,
+                        'path': PName
+                    },
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.code == 1) {
+                            setTimeout(function () {
+                                window.parent.postMessage('uploadsuccess', '*');
+                                let uploadSoure = phpimg_url + data.data.src;
+                                $('.bgMusic-upload>.Media-box>input').val(
+                                    uploadSoure);
+                                $('.bgMusic-upload>.Media-box>.fileuploadbtn').addClass(
+                                    'disabled')
+                            }, 1000);
+                        } else {
+                            // vm.isUpload = false
+                            window.parent.postMessage('uploadfail', '*');
+                        }
+                    }
+                });
+            })
+
+            $('#uploadFileVideo').change(function () {
+                window.parent.postMessage('uploading', '*');
+                var formData = new FormData($('#uploadFormVideo')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: phpedit_url + "upload/edit_file",
+                    headers: {
+                        'token': Token,
+                        'path': PName
+                    },
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.code == 1) {
+
+                            setTimeout(function () {
+                                window.parent.postMessage('uploadsuccess', '*');
+                                let uploadSoure = phpimg_url + data.data.src;
+                                $('.MapVideoContent-choose>.Media-box>input').val(
+                                    uploadSoure)
+                            }, 1000);
+                        } else {
+                            // vm.isUpload = false
+                            window.parent.postMessage('uploadfail', '*');
+                        }
+                    }
+                });
+            })
+
+            $('#uploadApartment').change(function () {
+                window.parent.postMessage('uploading', '*');
+                var formData = new FormData($('#uploadApartmentFrom')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: phpedit_url + "items/save_items_map",
+                    headers: {
+                        'token': Token,
+                        'path': PName,
+                        'uploadtype': uploadtype
+                    },
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.code == 200) {
+                            setTimeout(function () {
+                                window.parent.postMessage('uploadsuccess', '*');
+                                let uploadSoure = phpimg_url + data.data.map_src;
+                                // 判断上传的是哪种类型
+                                if (uploadtype == 'Map') {
+                                    // 导航图上传
+                                    $('#minimap').css('background-image', 'url('+ uploadSoure +')');
+
+                                } else if (uploadtype == 'Map_B') {
+                                    // 户型图上传
+                                    $('#insetImg').attr('src', uploadSoure);
+                                }
+                            }, 1000);
+                        } else {
+                            // vm.isUpload = false
+                            window.parent.postMessage('uploadfail', '*');
+                        }
+                    }
+                });
+            })
+
+
+
+            $('#uploadFile').change(function () {
+                window.parent.postMessage('uploading', '*');
+                // var formData = new FormData($('#uploadForm')[0]);
+                var formData = new FormData();
+                for (var i = 0; i < $('#uploadFile')[0].files.length; i++) {
+                    formData.append('file[]', $('#uploadFile')[0].files[i]);
+                    console.log($('#uploadFile')[0].files[i])
+                }
+
+
+                $.ajax({
+                    type: 'post',
+                    url: phpedit_url + "upload/edit_file",
+                    headers: {
+                        'token': Token,
+                        'path': PName,
+                        'uploadWay': uploadSendPanduan
+                    },
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                        if (data.code == 1) {
+                            // 告诉Vue, 用户上传成功了
+                            vm.isUpload = true;
+                            let res = data.data.src;
+                            let index = res.indexOf('.');
+                            setTimeout(function () {
+                                let uploadSoure = phpimg_url + data.data.src;
+                                $('.title-testarea>.Media-box>input').val(
+                                    uploadSoure);
+                                $('.Child3-Resources').show(100);
+                                $('.Child3-Resources').children().hide(100);
+                                // 改变了上传方式
+                                if (data.data.file_type == 'gltf') {
+                                    // 这里上传的就是gltf模型
+                                    $('.Child3-Resources>iframe').attr('src',
+                                        './Gltf.html?gltf=' + phpimg_url + data
+                                        .data
+                                        .src).css({
+                                        'display': 'block'
+                                    })
+                                    $('.title-testarea>.Media-box>input').val(
+                                        './Gltf.html?gltf=' + phpimg_url + data
+                                        .data
+                                        .src);
+                                    window.parent.postMessage('uploadsuccess', '*');
+                                    return false
+                                }
+                                if (data.data.file_type == 'video') {
+                                    $('.Child3-Resources>video').attr('src',
+                                        uploadSoure).css({
+                                        'display': 'block'
+                                    })
+                                    window.parent.postMessage('uploadsuccess', '*');
+                                } else if (data.data.file_type == 'audio') {
+                                    $('.audioPlay').show();
+                                    $('.audioPlay>audio').attr('src', uploadSoure).css({
+                                        'display': 'none'
+                                    })
+                                    window.parent.postMessage('uploadsuccess', '*');
+                                } else if (data.data.file_type == 'img') {
+                                    $('.Child3-Resources>img').attr('src',
+                                        uploadSoure).css({
+                                        'display': 'block'
+                                    })
+                                    window.parent.postMessage('uploadsuccess', '*');
+                                } else {
+                                    // 提示你上传的文件类型错误
+                                    alert('您上传的文件类型发生错误，请重新选择')
+                                }
+
+                            }, 1000);
+                        } else {
+                            vm.isUpload = false
+                            window.parent.postMessage('uploadfail', '*');
+                        }
+                    }
+                });
+            });
+            $('.hidebtn').click(function () {
+
+                if ($('.title_mes').css('display') == 'none') {
+
+                    $('.title_mes').css('display', 'block');
+
+
+
+                }
+
+
+
+
+                if ($('.scanTitle')[0].offsetLeft >= 0) {
+
+
+                    $('.title_mes_main').animate(
+
+                        {
+                            top: -$('.title_mes_main').height() - 72 + 'px'
+                        },
+                        function () {
+
+                            $('.scanTitle').animate({
+                                left: -$('.scanTitle').width() - 30 + 'px'
+                            }, function () {
+
+                                $('.title_mes').css('display', 'none')
+
+                                $('.hidebtn').hide();
+
+
+                            })
+
+
+
+                        })
+
+                } else {
+
+
+
+
+                    $('.scanTitle').animate({
+                        left: 20 + 'px'
+                    }, function () {
+
+                        $('.title_mes_main').animate(
+
+                                {
+                                    top: 0 + 'px'
+                                }),
+                            function () {
+                                $('.scanTitle').attr('width', '335px;')
+                            }
+
+                    })
+
+                }
+
+
+            })
+            $('.moreBtn').click(function () {
+                if ($('.title_mes_main')[0].offsetTop >= 0) {
+                    $('.title_mes_main').animate({
+                        top: -$('.title_mes_main').height() - 72 + 'px'
+                    }, function () {
+                        $('.LorM').html('More')
+                    })
+                } else {
+                    $('.title_mes_main').animate({
+                        top: 0 + 'px'
+                    }, function () {
+                        $('.LorM').html('Less')
+                    })
+                }
+
+            })
+        });
+        $('.type-tageta').click(function () {
+            $('.type-tageta').removeClass('type-selecta');
+            $(this).addClass('type-selecta');
+        });
+
+
+
+
+        controls();
+
+        function controls() {
+
+
+            // 禁止键盘事件
+            document.onkeydown = function () {
+                if (event.keyCode == 9) {
+                    return false; // 非常重要
+                }
+            }
+
+
+            $('.Media-box>.fixed-action-btn').mouseenter((e) => {
+                $('.Media').addClass('active');
+                // $('.Media>.Media-box')
+            })
+            $('.Media-box>.fixed-action-btn').mouseleave((e) => {
+                $('.Media').removeClass('active');
+                // $('.Media>.Media-box')
+            })
+
+
+
+            $(".music_icon").click(function () {
+
+                sound.pause(id);
+
+                $(this).css("display", "none");
+
+                $(".music_icon_off").css("display", "block");
+
+
+
+            });
+
+            $(".music_icon_off").click(function () {
+
+                sound.play();
+
+
+
+                $(".music_icon").css("display", "block");
+
+                $(this).css("display", "none");
+
+            });
+
+            $(".show_codebtn").click(function () {
+
+                $(".code_mask").fadeIn();
+
+                $(".show_code").fadeIn();
+
+
+
+            })
+
+            $(".code_mask").click(function () {
+
+                $(".code_mask").fadeOut();
+
+                $(".show_code").fadeOut();
+
+            })
+
+            $('#play').click(function () {
+                PlaySlides(modelData.slider.length);
+
+                $('.icon-one').css('color', '#4bcdfc');
+
+
+                $(this).css('display', 'none');
+
+                $('#pause').css('display', 'block');
+            })
+
+            $('#pause').click(function () {
+
+
+                // if (animateControl.getState() == 1) {
+                PlaySlides(modelData.slider.length);
+                $(this).css('display', 'none');
+
+                $('#play').css('display', 'block');
+
+            })
+
+            $('#previous').click(function () {
+
+                if ($('.swiper_ul li:first-child')[0] != $('.swiper_ul li[class="swiperCurrentLi"]')[0]) {
+                    $('.swiper_ul li[class="swiperCurrentLi"]').removeClass('swiperCurrentLi').prev().addClass(
+                        'swiperCurrentLi');
+                    showNextSlides($('.swiper_ul>li').index($('.swiper_ul li[class="swiperCurrentLi"]')));
+                } else {
+                    $('.swiper_ul li[class="swiperCurrentLi"]').removeClass('swiperCurrentLi');
+                    $('.swiper_ul li:last-child').addClass('swiperCurrentLi');
+                    showNextSlides($('.swiper_ul>li').index($('.swiper_ul li[class="swiperCurrentLi"]')));
+                }
+
+            })
+
+            $('#next').bind("click", function () {
+                if ($('.swiper_ul li:last-child')[0] != $('.swiper_ul li[class="swiperCurrentLi"]')[0]) {
+                    // 进行轮播
+                    $('.swiper_ul li[class="swiperCurrentLi"]').removeClass('swiperCurrentLi').next().addClass(
+                        'swiperCurrentLi');
+                    showNextSlides($('.swiper_ul>li').index($('.swiper_ul li[class="swiperCurrentLi"]')));
+                } else {
+                    $('.swiper_ul li[class="swiperCurrentLi"]').removeClass('swiperCurrentLi');
+                    $('.swiper_ul li:first-child').addClass('swiperCurrentLi');
+                    showNextSlides($('.swiper_ul>li').index($('.swiper_ul li[class="swiperCurrentLi"]')));
+                }
+
+                $('.swiper_ul li[class="swiperCurrentLi"]').addClass('swiperCurrentLi').siblings().removeClass(
+                    'swiperCurrentLi');
+
+            })
+        }
+    </script>
+    <script src="js/AnimateCommand/ScriptCommand.js"></script>
+    <script src="js/AnimateCommand/videoCommand.js"></script>
+    <!--<script src="js/main.min.js"></script>-->
+    <script src="js/main.js"></script>
+    <!-- editControl在html后引用 20180920 ning -->
+    <script src="./js/UIControls.js"></script>
+    <script src="./js/editControl.js"></script>
+    <script src="./js/materialize.min.js"></script>
+</body>
+
+</html>
